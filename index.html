@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <main class="page">
+
+    <nav id="desktop-nav">
+
+        <ul class="nav-links fade-in-up">
+            <li class="logo"><a href="https://www.linkedin.com/in/ericnguyen6/">eric nguyen</a></li>
+            <li class="link-in-nav"><a href="#" style="color:red;">index</a></li>
+            <li class="link-in-nav"><a href="#projects">projects</a></li>
+            <li class="link-in-nav"><a href="#experience">experience</a></li>
+            <li class="link-in-nav"><a href="#experience">pics</a></li>
+
+        </ul>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo"><a href="https://www.linkedin.com/in/ericnguyen6/">eric nguyen</a></div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+            <div class="menu-close" onclick="toggleMenu()">×</div>
+            <ul>    
+                <li><a href="#" onclick="toggleMenu()" style="color:red;">index</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">projects</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">experience</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">pics</a></li>
+
+            </ul>
+        </div>
+      </div>
+    </nav>
+    <section id="about">
+        <h1 class="typewriter">hello, i’m eric!</h1>
+        <p class="about-me">welcome to my website! i am a first-year eecs student at uc berkeley interested in fullstack, quant finance, and machine learning.
+            i enjoy a tough problem, and am always looking forward for opportunities to learn and grow as an engineer. 
+        </p>
+        <p class="about-me">currently, i'm a frontend swe intern at sked.ai where i help build intuitive ui flows for our constraint-aware scheduling platform.
+        </p>
+        <p class="about-me">feel free to reach out at eric_nguyen@berkeley.edu
+        </p>
+        <p class="about-me" style="font-weight: 800;">projects showcase: 
+        </p>
+    </section>
+    <section class="carousel" aria-label="Auto sliding carousel">
+    <div class="carousel-viewport">
+        <a href="#profile" class="carousel-link">
+
+
+        <div class="carousel-track" id="track">
+            <!-- original slides -->
+            <div class="slide">Project 1</div>
+            <div class="slide">Project 2</div>
+            <div class="slide">Project 3</div>
+            <div class="slide">Project 4</div>
+
+            <!-- dups (same as above) -->
+            <div class="slide">Project 1</div>
+            <div class="slide">Project 2</div>
+            <div class="slide">Project 3</div>
+            <div class="slide">Project 4</div>
+        </div>
+        </a>
+    </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links-footer">
+          </ul>
+        </div>
+      </nav>
+      <p>&#169; 2026 Eric Nguyen</p>
+    </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

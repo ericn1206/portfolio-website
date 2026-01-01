@@ -1,0 +1,358 @@
+/* General */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 1rem;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    background-color: rgb(240, 240, 240);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.page {
+    max-width: 800px;   
+    margin: 0 auto;      
+    padding: 0 clamp(1rem, 5vw, 17rem);
+
+    flex: 1;
+}
+/* INITIAL STATE */
+.page > *:not(#hamburger-nav),
+.hamburger-icon,
+#hamburger-nav .logo {
+    opacity: 0;
+  transform: translateY(-24px);
+  animation: fadeDown 0.8s ease-out forwards;
+}
+
+
+/* top → bottom */
+.page > *:not(#hamburger-nav):nth-child(1) { animation-delay: 0.1s; }
+.page > *:not(#hamburger-nav):nth-child(2) { animation-delay: 0.3s; }
+.page > *:not(#hamburger-nav):nth-child(3) { animation-delay: 0.5s; }
+.page > *:not(#hamburger-nav):nth-child(4) { animation-delay: 1s; }
+.page > *:not(#hamburger-nav):nth-child(5) { animation-delay: 1.2s; }
+
+@keyframes fadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* base state */
+#about .about-me {
+  opacity: 0;
+  transform: translateY(-14px);
+  animation: pFadeDown 600ms ease-out forwards;
+}
+
+/* stagger top → bottom */
+#about .about-me:nth-of-type(1) { animation-delay: 0.4s; }
+#about .about-me:nth-of-type(2) { animation-delay: 0.55s; }
+#about .about-me:nth-of-type(3) { animation-delay: 0.7s; }
+#about .about-me:nth-of-type(4) { animation-delay: 0.85s; }
+
+@keyframes pFadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+p {
+    color: rgb(85, 85, 85);
+    line-height: 1.5;
+}
+
+.about-me {
+    padding-top: 1rem;
+}
+
+::selection {
+background-color: lightyellow;
+}
+
+/* Transition */
+
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid black;
+    white-space: nowrap;
+    --chars: 12;                 /* number of characters */
+    width: calc(var(--chars) * 1ch);
+    margin: 0 auto;
+    text-align: center;
+    animation: typing 1.2s steps(var(--chars)) forwards,
+                blink 0.7s infinite;
+    animation-delay: 0.6s;
+    animation-fill-mode: both; 
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to   { width: calc(var(--chars) * 1ch); }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+a, 
+.btn {
+    transition: all 300ms ease;
+}
+
+/* Desktop Nav */
+#desktop-nav{
+    top: 0;
+    width: 100%;
+    height: 7vh;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+    /*border-top: 1.25px solid lightgray;
+    border-bottom: 1.25px solid lightgray;*/
+
+    overflow: hidden;              
+}
+
+.carousel {
+    max-width: 800px;
+    margin: 2rem auto;
+    border: 3px solid lightgray;
+    border-radius: 16px;
+}
+
+.carousel:hover {
+    scale: 1.01;
+    border-color: lightblue;
+    cursor: pointer;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgb(255, 255, 255);
+  position: relative;
+  
+}
+.carousel-link{
+  display: block;            /* makes entire viewport clickable */
+  text-decoration: none;
+  color: inherit;
+}
+
+.carousel-track {
+  display: flex;
+  will-change: transform;
+    flex-wrap: nowrap;
+
+   gap: 0.5rem;
+}
+
+.slide {
+  flex: 0 0 calc(33% - 1rem);  /* 3 cards per view with gap */
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  background: rgb(245,245,245);
+  border-right: 1px solid #ddd;
+    border-radius: 16px;
+  user-select: none;
+    
+    /* Vendor prefixes for older browser compatibility */
+    -webkit-user-select: none; /* Safari, Chrome */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer 10+ */
+    -khtml-user-select: none;  /* Konqueror HTML */
+    
+}
+  
+.link-in-nav a {
+    display: block;
+    text-align: left;
+    padding: 3px 12px;
+    text-decoration: none;
+    font-size: 13px;
+    color:rgb(165, 165, 165);
+    
+}
+
+.link-in-nav:not(:last-child) {
+    border-right: 3px dotted lightgray;
+
+}
+
+.link-in-nav a:hover {
+    color: black;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 8vh;
+}
+
+/* Nav links */
+.nav-links {
+    align-items: center;     /* vertical centering */
+    display: flex;
+    list-style: none;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.nav-links-footer {
+    gap: 2rem;
+    list-style: none;
+    font-size: 1.5rem;
+    align-items: center;
+
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    font-size: 2rem;
+    color: black;
+    padding: 0rem 0.25rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    align-items: center;     
+    margin-right: auto;
+    border: 3px outset black;
+    border-radius: 3px;
+}
+.logo:hover {
+    background-color: rgb(250, 250, 250);
+    cursor: pointer;
+
+}
+
+
+a {
+    color: black;
+    text-decoration: none;
+    text-decoration-color: white;
+}
+
+
+/* Hamburger Menu */
+
+#hamburger-nav {
+    display: none;
+}
+
+.hamburger-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 16px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.hamburger-icon span {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    transition: all 0.3 ease-in-out;
+
+}
+
+.menu-links{
+  position: fixed;
+  top: 0;                 
+  right: 0;
+  height: 100vh;
+  width: 280px;          
+
+  background-color: rgb(230,229,229);
+
+  transform: translateX(150%);    /* hidden off-screen */
+  transition: transform 0.3s ease;
+
+  z-index: 1000;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.menu-links.open{
+  transform: translateX(0);
+
+}
+
+/* list reset */
+.menu-links ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-links a{
+  display: block;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: black;
+  text-decoration: none;
+}
+
+.menu-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+
+section {
+    /*margin: 0 10rem;*/
+    box-sizing: border-box;
+    min-height: fit-content;
+}
+
+.section-container {
+    display: flex;
+}
+
+
+/* FOOTER SECTION */
+
+footer {
+  height: auto;
+  margin: 2rem 1rem 0;
+  padding: 2rem 0;
+
+}
+
+footer p {
+  text-align: center;
+}
