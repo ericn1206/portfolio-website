@@ -73,6 +73,15 @@ html {
 p {
     color: rgb(85, 85, 85);
     line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    color: black;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 .about-me {
@@ -128,29 +137,53 @@ a,
 }
 
 .carousel {
-    max-width: 800px;
-    margin: 2rem auto;
-    border: 3px solid lightgray;
-    border-radius: 16px;
+  max-width: 1100px;
+  margin: 1rem auto;
+    border: 3px solid transparent;
+    background-color: none;
+
 }
 
 .carousel:hover {
-    scale: 1.01;
-    border-color: lightblue;
+    scale: 1.015;
     cursor: pointer;
 }
 
 .carousel-viewport {
   overflow: hidden;
-  border-radius: 16px;
-  background: rgb(255, 255, 255);
+    border: 3px solid transparent;
+
+  background: none;
   position: relative;
+  /* fade edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+    background-color: rgb(195, 195, 195);
+  overscroll-behavior: contain;
   
 }
-.carousel-link{
-  display: block;            /* makes entire viewport clickable */
-  text-decoration: none;
-  color: inherit;
+.carousel-viewport:hover {
+    background-color: rgb(147, 153, 159);
+
+
+}
+.carousel-wrapper {
+    padding-top: 0rem;
+  width: 55vw;
+  margin-left: calc(50% - 27.5vw);
+
 }
 
 .carousel-track {
@@ -163,22 +196,39 @@ a,
 
 .slide {
   flex: 0 0 calc(33% - 1rem);  /* 3 cards per view with gap */
-  min-height: 240px;
+  height: 190px;
+width: 240px;
+
   display: grid;
-  place-items: center;
+  place-items: top;
   font-size: 2rem;
   font-weight: 600;
-  background: rgb(245,245,245);
-  border-right: 1px solid #ddd;
-    border-radius: 16px;
+  background: rgb(245, 243, 243);
+  border: 3px solid rgb(81, 81, 81);
+      border-radius: 4px;
+
   user-select: none;
     
-    /* Vendor prefixes for older browser compatibility */
     -webkit-user-select: none; /* Safari, Chrome */
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* Internet Explorer 10+ */
     -khtml-user-select: none;  /* Konqueror HTML */
     
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+border-bottom: 2px solid rgb(81, 81, 81);
+  display: block;
+  object-fit: fill;
+
+}
+.slide img:hover {
+        filter: grayscale(0%);
+
+  opacity: 0.99;
 }
   
 .link-in-nav a {
@@ -215,6 +265,7 @@ nav {
     font-size: 1.5rem;
     margin: 0;
     padding: 0;
+    padding-top: 0.75rem;
     width: 100%;
 }
 
@@ -240,7 +291,7 @@ nav {
     border-radius: 3px;
 }
 .logo:hover {
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(255, 196, 196);
     cursor: pointer;
 
 }
