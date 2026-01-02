@@ -173,6 +173,7 @@ a,
     margin: 1rem auto;
     border: 3px solid transparent;
     background-color: none;
+    margin-bottom: 0;
 
 }
 
@@ -183,11 +184,11 @@ a,
 
 .carousel-viewport {
     overflow: hidden;
-        border: 3px solid transparent;
+    border: 3px solid transparent;
 
     background: none;
     position: relative;
-/* fade edges */
+    /* fade edges */
     -webkit-mask-image: linear-gradient(
         to right,
         transparent 0%,
@@ -236,8 +237,10 @@ a,
 .carousel-info {
     margin-top: 1rem;
     text-align: center;
-    min-height: 120px; /* prevents layout jump */
+    min-height: 0;
 }
+.carousel-info.active { min-height: 120px; }
+
 
 .carousel-info h3 {
     font-size: 1.4rem;
@@ -277,7 +280,7 @@ a,
     border-left: 1.5px solid rgb(160, 160, 160);
     border-right: 4px solid rgb(160, 160, 160);
 
-    border-radius: 2px;
+    border-radius: 6px;
     user-select: none;
     
     -webkit-user-select: none; /* Safari, Chrome */
@@ -345,13 +348,16 @@ a,
 
 
 .projects-btn {
-    margin-left: auto;       
+    margin-left: auto;      
+    width: fit-content; 
     padding: 6px 16px;
     border: 1.5px solid black;
     border-radius: 999px;
     text-decoration: none;
     color: black;
     font-size: 0.95rem;
+    text-overflow: clip;
+    text-align: center;
 }
 .projects-btn:hover {
     border-color: rgb(212, 35, 35);
@@ -397,13 +403,6 @@ nav {
     width: 100%;
 }
 
-.nav-links-footer {
-    gap: 2rem;
-    list-style: none;
-    font-size: 1.5rem;
-    align-items: center;
-
-}
 
 /* Logo */
 .logo {
@@ -526,8 +525,12 @@ section {
 
 footer {
     height: auto;
-    margin: 2rem 1rem 0;
+    margin: 0rem 1rem 0;
     padding: 2rem 0;
+    padding-top: 0.5rem;  
+    margin-top: 0;   
+    position:sticky;
+    bottom:0;
 }
 
 footer p {

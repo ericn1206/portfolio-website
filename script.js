@@ -190,3 +190,21 @@ slides.forEach(slide => {
         carousel1.classList.remove("hovering");
     });
 });
+
+const carousel2 = document.querySelector(".carousel-viewport");
+
+const infoBox = document.getElementById("carousel-info");
+
+carousel2.addEventListener("mouseenter", () => {
+  infoBox.classList.add("active");
+});
+
+carousel2.addEventListener("mouseleave", () => {
+  infoBox.classList.remove("active");
+
+  // clear text when fully leaving carousel
+  title.textContent = "";
+  desc.textContent = "";
+  tech.textContent = "";
+});
+
