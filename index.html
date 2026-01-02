@@ -9,17 +9,15 @@
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
   <body>
+    <canvas id="bg"></canvas>
     <main class="page">
-
     <nav id="desktop-nav">
-
         <ul class="nav-links">
             <li class="logo"><a href="https://www.linkedin.com/in/ericnguyen6/">eric nguyen</a></li>
             <li class="link-in-nav"><a href="#" style="color:red;">index</a></li>
             <li class="link-in-nav"><a href="#projects">projects</a></li>
             <li class="link-in-nav"><a href="#experience">experience</a></li>
             <li class="link-in-nav"><a href="#experience">pics</a></li>
-
         </ul>
     </nav>
     <nav id="hamburger-nav">
@@ -37,22 +35,27 @@
                 <li><a href="#projects" onclick="toggleMenu()">projects</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">experience</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">pics</a></li>
-
             </ul>
         </div>
       </div>
     </nav>
     <section style="padding-top: 1rem;" id="about">
-        <h1 class="typewriter">hello, i’m eric!</h1>
+        <div class="typewriter-wrapper">
+        <h1 class="typewriter" data-text="hello, i'm eric!"></h1>
+        </div>
+
         <p class="about-me">welcome to my website! i am a first-year eecs student at uc berkeley interested in fullstack, quant finance, and machine learning.
-            i enjoy a tough problem, and am always looking forward for opportunities to learn and grow as an engineer. 
+            currently, i'm a frontend swe intern at sked.ai where i help build intuitive ui flows for our constraint-aware scheduling platform. 
         </p>
-        <p class="about-me">currently, i'm a frontend swe intern at sked.ai where i help build intuitive ui flows for our constraint-aware scheduling platform.
+ 
+        <p class="about-me">i enjoy a tough problem, and am always looking forward for opportunities to learn and grow as an engineer. feel free to reach out at eric_nguyen@berkeley.edu
         </p>
-        <p class="about-me">feel free to reach out at eric_nguyen@berkeley.edu
-        </p>
-        <p class="about-me" style="font-weight: 800; color:rgb(243, 81, 81)">projects showcase: 
-        </p>
+    
+        <div class="projects-header">
+        <span class="projects-label">projects showcase:</span>
+        <a href="/projects" class="projects-btn about-me">see all projects</a>
+        </div>
+
     </section>
     <section class="carousel-wrapper">
 
@@ -61,18 +64,48 @@
 
         <div class="carousel-track" id="track">
             <!-- original slides -->
-            <a class="slide"><img src="assets/project_engenuity_snapshot.png" alt="project engenuity"></a>
+            <a class="slide"
+            href="#experience"
+            data-title="project enginuity - unity, c#"
+            data-desc="a bridge-building simulation for middle school classrooms. designed for teachers to integrate into lessons.">
+            <img src="assets/project_engenuity_snapshot.png" alt="">
+            </a>
+
+            <a class="slide"
+                href="#experience"
+                data-title="quantum cryptography - arduino, cad, c++"
+                data-desc="photonics model of bb84 quantum protocol. ucsd cosmos 2024">
+                <img src="assets/quant2.png" alt="">
+            </a>
 
             <a class="slide" href="#experience"></a>
             <a class="slide" href="#experience"></a>
             <!-- dups (same as above) -->
-            <a class="slide"><img src="assets/project_engenuity_snapshot.png" alt="project engenuity"></a>
+            <a class="slide"
+                href="#experience"
+            data-title="project enginuity - unity, c#"
+                data-desc="a bridge-building simulation for middle school classrooms. designed for teachers to integrate into lessons.">
+                <img src="assets/project_engenuity_snapshot.png" alt="">
+            </a>
+
+            <a class="slide"
+                href="#experience"
+                data-title="quantum cryptography - arduino, cad, c++"
+                data-desc="photonics model of bb84 quantum protocol. ucsd cosmos 2024">
+                <img src="assets/quant2.png" alt="">
+            </a>
             <a class="slide" href="#experience"></a>
             <a class="slide" href="#experience"></a>
         </div>
     </div>
     </section>
     </section>
+    <section class="carousel-info" id="carousel-info">
+        <h3 id="info-title"></h3>
+        <p id="info-desc"></p>
+        <p id="info-tech"></p>
+    </section>
+
     <footer>
       <nav>
         <div class="nav-links-container">
