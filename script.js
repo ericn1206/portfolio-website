@@ -165,21 +165,36 @@ const title = document.getElementById("info-title");
 const desc = document.getElementById("info-desc");
 
 function clearInfo() {
-    title.textContent = "";
-    desc.textContent = "";
+    title.textContent = "ㅤ";
+    desc.textContent = "Socials";
 }
+clearInfo();
+const carousel1 = document.querySelector(".carousel");
 
-// for mouse blur carousel effect
-slides.forEach(slide => {
-    slide.addEventListener("mouseenter", () => {
-        title.textContent = slide.dataset.title || "";
-        desc.textContent = slide.dataset.desc || "";
-    });
-
-    slide.addEventListener("mouseleave", clearInfo);
+/* show / hide info when entering or leaving the CAROUSEL */
+carousel1.addEventListener("mouseenter", () => {
+  // show info area
+  document.getElementById("carousel-info").classList.add("active");
 });
 
-const carousel1 = document.querySelector(".carousel");
+carousel1.addEventListener("mouseleave", () => {
+  // hide info area
+  document.getElementById("carousel-info").classList.remove("active");
+
+  // clear text
+  clearInfo();
+});
+
+/* slides ONLY update text */
+slides.forEach(slide => {
+  slide.addEventListener("mouseenter", () => {
+    title.textContent = slide.dataset.title || "";
+    desc.textContent = slide.dataset.desc || "";
+  });
+});
+
+
+// for mouse blur carousel effect
 
 slides.forEach(slide => {
     slide.addEventListener("mouseenter", () => {
@@ -191,20 +206,5 @@ slides.forEach(slide => {
     });
 });
 
-const carousel2 = document.querySelector(".carousel-viewport");
 
-const infoBox = document.getElementById("carousel-info");
-
-carousel2.addEventListener("mouseenter", () => {
-  infoBox.classList.add("active");
-});
-
-carousel2.addEventListener("mouseleave", () => {
-  infoBox.classList.remove("active");
-
-  // clear text when fully leaving carousel
-  title.textContent = "";
-  desc.textContent = "";
-  tech.textContent = "";
-});
 

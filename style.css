@@ -56,32 +56,54 @@ body {
 .page > *:not(#hamburger-nav):nth-child(3) { animation-delay: 0.5s; }
 .page > *:not(#hamburger-nav):nth-child(4) { animation-delay: 1.1s; }
 .page > *:not(#hamburger-nav):nth-child(5) { animation-delay: 1.3s; }
-
+.page > *:not(#hamburger-nav):nth-child(6) { animation-delay: 1.5s; }
+.page > *:not(#hamburger-nav):nth-child(7) { animation-delay: 1.7s; }
 @keyframes fadeDown {
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-/* base state */
-#about .about-me {
+
+#about .typewriter-wrapper,
+#about p.about-me,
+#about .projects-header {
     opacity: 0;
-    transform: translateY(-14px);
+    transform: translateY(14px);
     animation: pFadeDown 600ms ease-out forwards;
 }
 
 /* stagger top → bottom */
-#about .about-me:nth-of-type(1) { animation-delay: 0.4s; }
-#about .about-me:nth-of-type(2) { animation-delay: 0.55s; }
-#about .about-me:nth-of-type(3) { animation-delay: 0.7s; }
-#about .about-me:nth-of-type(4) { animation-delay: 0.85s; }
-#about .about-me:nth-of-type(5) { animation-delay: 1.0s; }
+#about .typewriter-wrapper { animation-delay: 0.2s; }
+#about p.about-me:nth-of-type(1) { animation-delay: 0.4s; }
+#about p.about-me:nth-of-type(2) { animation-delay: 0.55s; }
+#about .projects-header { animation-delay: 0.7s; }
 
 @keyframes pFadeDown {
-to {
-    opacity: 1;
-    transform: translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: sticky;
+}
+
+.socials a {
+    font-size: 1.4rem;
+    color: rgb(120, 120, 120);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.socials a:hover {
+    color: rgb(235, 37, 37);
+    transform: translateY(-2px);
 }
 
 html {
@@ -235,11 +257,11 @@ a,
 }
 
 .carousel-info {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     text-align: center;
     min-height: 0;
+    min-height: 60px;
 }
-.carousel-info.active { min-height: 120px; }
 
 
 .carousel-info h3 {
@@ -277,8 +299,8 @@ a,
     font-size: 2rem;
     font-weight: 600;
     background: rgb(245, 243, 243);
-    border-left: 1.5px solid rgb(160, 160, 160);
-    border-right: 4px solid rgb(160, 160, 160);
+    border-left: 3px solid rgb(160, 160, 160);
+    border-right: 5px solid rgb(160, 160, 160);
 
     border-radius: 6px;
     user-select: none;
@@ -288,8 +310,8 @@ a,
     -ms-user-select: none;     /* Internet Explorer 10+ */
     -khtml-user-select: none;  /* Konqueror HTML */
 
-    border-top: 1.5px solid rgb(60, 60, 60);
-    border-bottom: 3px solid rgb(60, 60, 60);
+    border-top: 3px solid rgb(60, 60, 60);
+    border-bottom: 4.5px solid rgb(60, 60, 60);
     border-color: rgb(60, 60, 60);
 
     transition: filter 0.25s ease, transform 0.25s ease;
@@ -529,7 +551,6 @@ footer {
     padding: 2rem 0;
     padding-top: 0.5rem;  
     margin-top: 0;   
-    position:sticky;
     bottom:0;
 }
 
