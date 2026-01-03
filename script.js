@@ -164,9 +164,11 @@ const slides = document.querySelectorAll(".slide");
 const title = document.getElementById("info-title");
 const desc = document.getElementById("info-desc");
 
+/* invis char:ㅤ*/
+
 function clearInfo() {
-    title.textContent = "ㅤ";
-    desc.textContent = "Socials";
+    title.textContent = "scroll/swipe to interact";
+    desc.textContent = "hover to view descriptions";
 }
 clearInfo();
 const carousel1 = document.querySelector(".carousel");
@@ -175,17 +177,19 @@ const carousel1 = document.querySelector(".carousel");
 carousel1.addEventListener("mouseenter", () => {
   // show info area
   document.getElementById("carousel-info").classList.add("active");
+
 });
 
 carousel1.addEventListener("mouseleave", () => {
   // hide info area
   document.getElementById("carousel-info").classList.remove("active");
 
+
   // clear text
   clearInfo();
 });
 
-/* slides ONLY update text */
+/* slides only update text */
 slides.forEach(slide => {
   slide.addEventListener("mouseenter", () => {
     title.textContent = slide.dataset.title || "";
