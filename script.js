@@ -11,7 +11,7 @@ function toggleMenu() {
 const track = document.getElementById("track");
 const carousel = document.querySelector(".carousel-viewport");
 
-const speedPxPerSec = 40;
+const speedPxPerSec = 20;
 
 let x = 0;
 let last = performance.now();
@@ -146,7 +146,7 @@ document.querySelectorAll(".typewriter").forEach(el => {
     const full = el.dataset.text ?? el.textContent;
     el.textContent = ""; // start empty
 
-    const delayMs = 1400;     // start delay
+    const delayMs = 2700;     // start delay
     const msPerChar = 70;    // typing speed
 
     let i = 0;
