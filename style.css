@@ -138,12 +138,14 @@ h1 {
     text-decoration: underline;
     text-decoration-color: red;
     text-underline-offset: 5px;
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
+    font-size: clamp(1.8rem, 4vw, 2.3rem);
 
 }
 
 .about-me {
     margin-top: 1rem;
+    margin-bottom: 1rem;
+
 }
 
 ::selection {
@@ -192,14 +194,16 @@ a,
     z-index: 9999;
     display: flex;
     align-items: center;
-    letter-spacing: 2px;
+    letter-spacing: 1.25px;
     /*border-top: 1.25px solid lightgray;
     border-bottom: 1.25px solid lightgray;*/
 }
 
 .carousel {
     max-width: 1100px;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
+    margin-top: 0;
+
     border: 3px solid transparent;
     background-color: none;
     margin-bottom: 0;
@@ -281,7 +285,7 @@ a,
     margin-top: 0.75rem;
     text-align: center;
     min-height: 60px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .carousel-info h3 {
@@ -385,8 +389,8 @@ a,
     display: flex;
     align-items: center;
     width: 100%;    
-    margin-top: 0.75rem;
-         
+    margin-top: 1rem;
+        
 }
 .projects-label {
     font-size: clamp(0.95rem, 1.3vw, 1.05rem);
@@ -440,6 +444,7 @@ nav {
     align-items: center;
     justify-content: flex-start;
     height: 8vh;
+
 }
 
 /* Nav links */
@@ -464,8 +469,11 @@ nav {
     font-weight: 700;
     align-items: center;     
     margin-right: auto;
+    border-radius: 12px 4px 12px 4px;
+    /*
     border: 3px solid black;
     border-radius: 12px;
+    */
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 .logo:hover {
@@ -567,7 +575,7 @@ section {
     /*margin: 0 10rem;*/
     box-sizing: border-box;
     min-height: 100%;
-      scroll-snap-align: start;
+    scroll-snap-align: start;
 
 }
 

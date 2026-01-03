@@ -1,5 +1,28 @@
+@media screen and (max-width: 950px) {
+    .carousel-wrapper {
+    padding-top: 0rem;
+    width: 90vw;
+    margin-left: calc(50% - 45vw);
+    }
 
+
+    .carousel-info h3 {
+        font-size: clamp(1.0rem, 0.7vw, 1.9rem);
+        margin-bottom: clamp(0.15rem, 0.15vw, 0.3rem);
+    }
+    .carousel-info p {
+        font-size: clamp(0.8rem, 0.7vw, 1.9rem);
+        margin-bottom: clamp(0.15rem, 0.15vw, 0.3rem);
+    }
+
+    .slide {
+        flex: 0 0 clamp(230px,30vw,240px);  /* 3 cards per view with gap */
+        height: clamp(180px,23vw,220px)
+    }
+    
+}
 @media screen and (max-width: 600px) {
+
     #desktop-nav {
         display: none;
     }
@@ -28,16 +51,17 @@
         gap: 0.5rem;
         text-align: center;
     }   
-    .carousel.hovering .slide {
-        filter: blur(0px) grayscale(0%);
-    }
+    
     .projects-label {
         display: none;
     }
 
     .projects-btn {
         margin: auto;
+        margin-bottom: 0.5rem;
     }
+
+
 
 
 
@@ -64,28 +88,4 @@
     */
   
 
-}
-
-@media screen and (max-width: 950px) {
-    .carousel-wrapper {
-    padding-top: 0rem;
-    width: 90vw;
-    margin-left: calc(50% - 45vw);
-    }
-
-    .slide {
-        height: 23vw;
-        flex: 0 0 30vw;  /* 3 cards per view with gap */
-
-    }
-
-    .carousel-info h3 {
-        font-size: clamp(1.0rem, 0.7vw, 1.9rem);
-        margin-bottom: clamp(0.15rem, 0.15vw, 0.3rem);
-    }
-    .carousel-info p {
-        font-size: clamp(0.8rem, 0.7vw, 1.9rem);
-        margin-bottom: clamp(0.15rem, 0.15vw, 0.3rem);
-    }
-    
 }
