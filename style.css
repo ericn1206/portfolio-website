@@ -300,8 +300,8 @@ a,
     transition: opacity 0.2s ease;
 }
 /* when carousel is active */
-    .carousel.hovering .slide {
-    filter: blur(2px) grayscale(80%);
+.carousel.hovering .slide {
+    filter: blur(0px) grayscale(90%);
 }
 
 /* keep hovered slide sharp */
