@@ -40,11 +40,25 @@ function step(now) {
     const dt = (now - last) / 1000;
     last = now;
 
+    // auto-scroll
     if (!isPaused()) {
         x -= speedPxPerSec * dt;
-        wrap();
-        track.style.transform = `translateX(${x}px)`;
     }
+
+    // wheel inertia (runs at rAF smoothness)
+    if (Math.abs(wheelVelocity) > 0.01) {
+        // wheelVelocity is "px per second" style, so apply with dt (?)
+        x -= wheelVelocity * dt;
+
+        // friction (tune)
+        const friction = 12; // higher means stops sooner
+        wheelVelocity *= Math.exp(-friction * dt);
+
+        if (Math.abs(wheelVelocity) < 0.01) wheelVelocity = 0;
+    }
+
+    wrap();
+    track.style.transform = `translateX(${x}px)`;
     requestAnimationFrame(step);
 }
 
@@ -58,29 +72,38 @@ document.addEventListener("visibilitychange", () => {
     last = performance.now(); // avoid jump
 });
 
+// smooth wheel state
+let wheelVelocity = 0;      // px/sec-ish ?
+let wheelActive = false;    // used for pausing auto-scroll briefly
+
 // wheel interaction
 carousel.addEventListener(
     "wheel",
     (e) => {
         e.preventDefault();
 
-        wheelPaused = true;
-
+        // pick the dominant axis so vertical wheel still moves carousel
         const dx = e.deltaX;
         const dy = e.deltaY;
         const dominant = Math.abs(dx) > Math.abs(dy) ? dx : dy;
 
-        const scrollSpeed = 1; // tune
-        x -= dominant * scrollSpeed;
+        // normalize: trackpads often use deltaMode=0 (pixels), mouse wheel can be 1 (lines)
+        const LINE_HEIGHT = 16;
+        const delta = e.deltaMode === 1 ? dominant * LINE_HEIGHT : dominant;
 
-        wrap();
-        track.style.transform = `translateX(${x}px)`;
+        // convert delta into velocity (tune multiplier)
+        const wheelBoost = 14; // bigger is more responsive
+        wheelVelocity += delta * wheelBoost;
+
+        wheelActive = true;
+        wheelPaused = true;
 
         clearTimeout(carousel._wheelTimeout);
         carousel._wheelTimeout = setTimeout(() => {
+        wheelActive = false;
         wheelPaused = false;
-        // if still hovered, isPaused() keeps it paused anyway
-        }, 250);
+        last = performance.now(); // avoid jump
+        }, 120); // short pause; inertia still runs
     },
     { passive: false }
 );
@@ -110,6 +133,8 @@ carousel.addEventListener("pointerdown", (e) => {
     startX = e.clientX;
     startTranslateX = x; // x is current translate value
 });
+
+track.style.willChange = "transform";
 
 carousel.addEventListener("pointermove", (e) => {
     if (!dragging) return;
