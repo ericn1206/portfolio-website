@@ -102,6 +102,7 @@ body {
     font-size: 1.4rem;
     color: rgb(120, 120, 120);
     transition: transform 0.2s ease, color 0.2s ease;
+    scale: 1.05;
 }
 
 .socials a:hover {

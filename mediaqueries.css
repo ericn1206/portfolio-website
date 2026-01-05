@@ -15,9 +15,13 @@
         margin-bottom: clamp(0.15rem, 0.15vw, 0.3rem);
     }
 
+  
+}
+@media screen and (max-width: 850px) {
+   
     .slide {
-        flex: 0 0 clamp(230px,30vw,240px);  /* 3 cards per view with gap */
-        height: clamp(180px,23vw,220px)
+        flex: 0 0 clamp(200px,30vw,240px);  /* 3 cards per view with gap */
+        height: clamp(170px,23vw,220px)
     }
     
 }

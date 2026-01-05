@@ -11,7 +11,8 @@ function toggleMenu() {
 const track = document.getElementById("track");
 const carousel = document.querySelector(".carousel-viewport");
 
-const speedPxPerSec = 20;
+//pause carousel permanently for now...
+let speedPxPerSec = 0;
 
 let x = 0;
 let last = performance.now();
@@ -65,6 +66,9 @@ function step(now) {
 // hover pause (lwk optional since isPaused uses matches(":hover"))
 carousel.addEventListener("mouseenter", () => (hoverPaused = true));
 carousel.addEventListener("mouseleave", () => (hoverPaused = false));
+
+// stop carousel once user starts interacting (remove?)
+carousel.addEventListener("mouseleave", () => (speedPxPerSec = 0));
 
 // tab hidden pause
 document.addEventListener("visibilitychange", () => {
