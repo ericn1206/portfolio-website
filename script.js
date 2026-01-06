@@ -8,16 +8,6 @@ function toggleMenu() {
 
 // CAROUSEL!!!
 
-let targetX = 0;
-let rafPending = false;
-
-function render() {
-  rafPending = false;
-  wrap();
-  track.style.transform = `translate3d(${x}px, 0, 0)`; // GPU accel
-}
-
-
 const track = document.getElementById("track");
 const carousel = document.querySelector(".carousel-viewport");
 
@@ -69,8 +59,7 @@ function step(now) {
     }
 
     wrap();
-    track.style.transform = `translate3d(${x}px, 0, 0)`;
-
+    track.style.transform = `translateX(${x}px)`;
     requestAnimationFrame(step);
 }
 
@@ -133,7 +122,29 @@ let startTranslateX = 0;
 let activePointerId = null;
 
 const DRAG_THRESHOLD = 8; // pixels
+let savedBodyOverflow = "";
+let savedTouchAction = "";
 
+// helpers
+function lockPageScroll() {
+  savedBodyOverflow = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
+}
+
+function unlockPageScroll() {
+  document.body.style.overflow = savedBodyOverflow || "";
+}
+
+function setTouchAction(val) {
+  // touch-action mainly matters for touch/pen, but still good to flip for consistency
+  if (!savedTouchAction) savedTouchAction = carousel.style.touchAction;
+  carousel.style.touchAction = val;
+}
+
+function restoreTouchAction() {
+  carousel.style.touchAction = savedTouchAction || "pan-y";
+  savedTouchAction = "";
+}
 
 function isInteractive(el) {
   return el.closest("a, button, input, textarea, select, label");
@@ -150,34 +161,20 @@ function isPaused() {
 // allow horizontal gestures. do not let browser treat it as page scroll
 carousel.style.touchAction = "pan-y"; // allow vertical page scroll
 
-
+// ---- UPDATE your pointerdown ----
 carousel.addEventListener("pointerdown", (e) => {
+  if (isInteractive(e.target)) return;
+
   pointerDown = true;
   dragging = false;
   dragPaused = true;
-  startTranslateX = x;
-    targetX = x;
-
 
   activePointerId = e.pointerId;
   startX = e.clientX;
   startTranslateX = x;
-
-  // capture immediately so we keep getting moves on mobile Safari
-  carousel.setPointerCapture(e.pointerId);
 });
 
-// prevent accidental click after drag
-carousel.addEventListener("click", (e) => {
-  if (dragging) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-}, true);
-
-
-track.style.willChange = "transform";
-
+// ---- UPDATE your pointermove ----
 carousel.addEventListener("pointermove", (e) => {
   if (!pointerDown || e.pointerId !== activePointerId) return;
 
@@ -185,48 +182,48 @@ carousel.addEventListener("pointermove", (e) => {
 
   if (!dragging) {
     if (Math.abs(dx) < DRAG_THRESHOLD) return;
+
+    // confirmed drag
     dragging = true;
+    carousel.setPointerCapture(activePointerId);
+
+    // IMPORTANT: prevent vertical page scroll while dragging
+    lockPageScroll();
+    setTouchAction("none");
   }
 
-  // prevent page scroll while dragging
   e.preventDefault();
+  x = startTranslateX + dx;
+  wrap();
+  track.style.transform = `translateX(${x}px)`;
+});
 
-  targetX = startTranslateX + dx;
-  x = targetX;
-
-  if (!rafPending) {
-    rafPending = true;
-    requestAnimationFrame(render);
-  }
-}, { passive: false });
-
-
+// ---- UPDATE endDrag to restore scrolling ----
 function endDrag(e) {
-    if (e.pointerId !== activePointerId) return;
+  if (e.pointerId !== activePointerId) return;
 
-    pointerDown = false;
+  pointerDown = false;
 
-    if (dragging) {
-        dragging = false;
-        // small delay before auto resumes
-        setTimeout(() => {
-        dragPaused = false;
-        last = performance.now();
-        }, 200);
-    } else {
-        // it was a tap (so therefore not a drag), resume immediately
-        dragPaused = false;
-        last = performance.now();
-    }
+  if (dragging) {
+    dragging = false;
+    unlockPageScroll();
+    restoreTouchAction();
 
-    activePointerId = null;
+    setTimeout(() => {
+      dragPaused = false;
+      last = performance.now();
+    }, 200);
+  } else {
+    dragPaused = false;
+    last = performance.now();
+  }
+
+  activePointerId = null;
 }
 
 carousel.addEventListener("pointerup", endDrag);
 carousel.addEventListener("pointercancel", endDrag);
 carousel.addEventListener("lostpointercapture", endDrag);
-
-
 requestAnimationFrame(step);
 
 // TYPEWRITER ANIMATION THINGY

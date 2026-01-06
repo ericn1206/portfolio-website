@@ -306,7 +306,7 @@ a {
     display: none;
       position: sticky;
 
-  top: 12px;                 /* space from top so pill is visible */
+  top: 15px;                 /* space from top so pill is visible */
   z-index: 9999;
     min-width: 100%;
   width: 100%;
