@@ -8,6 +8,16 @@ function toggleMenu() {
 
 // CAROUSEL!!!
 
+let targetX = 0;
+let rafPending = false;
+
+function render() {
+  rafPending = false;
+  wrap();
+  track.style.transform = `translate3d(${x}px, 0, 0)`; // GPU accel
+}
+
+
 const track = document.getElementById("track");
 const carousel = document.querySelector(".carousel-viewport");
 
@@ -59,7 +69,8 @@ function step(now) {
     }
 
     wrap();
-    track.style.transform = `translateX(${x}px)`;
+    track.style.transform = `translate3d(${x}px, 0, 0)`;
+
     requestAnimationFrame(step);
 }
 
@@ -144,6 +155,9 @@ carousel.addEventListener("pointerdown", (e) => {
   pointerDown = true;
   dragging = false;
   dragPaused = true;
+  startTranslateX = x;
+    targetX = x;
+
 
   activePointerId = e.pointerId;
   startX = e.clientX;
@@ -165,24 +179,27 @@ carousel.addEventListener("click", (e) => {
 track.style.willChange = "transform";
 
 carousel.addEventListener("pointermove", (e) => {
-    if (!pointerDown || e.pointerId !== activePointerId) return;
+  if (!pointerDown || e.pointerId !== activePointerId) return;
 
-    const dx = e.clientX - startX;
+  const dx = e.clientX - startX;
 
-    // Don't start dragging until user moves enough (so taps still click)
-    if (!dragging) {
-        if (Math.abs(dx) < DRAG_THRESHOLD) return;
+  if (!dragging) {
+    if (Math.abs(dx) < DRAG_THRESHOLD) return;
+    dragging = true;
+  }
 
-        dragging = true;
-        carousel.setPointerCapture(activePointerId);
-    }
+  // prevent page scroll while dragging
+  e.preventDefault();
 
-    // Now we're officially draggin
-    e.preventDefault();
-    x = startTranslateX + dx;
-    wrap();
-    track.style.transform = `translateX(${x}px)`;
-});
+  targetX = startTranslateX + dx;
+  x = targetX;
+
+  if (!rafPending) {
+    rafPending = true;
+    requestAnimationFrame(render);
+  }
+}, { passive: false });
+
 
 function endDrag(e) {
     if (e.pointerId !== activePointerId) return;
