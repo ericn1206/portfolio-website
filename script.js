@@ -141,16 +141,26 @@ carousel.style.touchAction = "pan-y"; // allow vertical page scroll
 
 
 carousel.addEventListener("pointerdown", (e) => {
-    if (isInteractive(e.target)) return;
+  pointerDown = true;
+  dragging = false;
+  dragPaused = true;
 
-    pointerDown = true;
-    dragging = false;          // not dragging yet
-    dragPaused = true;
+  activePointerId = e.pointerId;
+  startX = e.clientX;
+  startTranslateX = x;
 
-    activePointerId = e.pointerId;
-    startX = e.clientX;
-    startTranslateX = x;
+  // capture immediately so we keep getting moves on mobile Safari
+  carousel.setPointerCapture(e.pointerId);
 });
+
+// prevent accidental click after drag
+carousel.addEventListener("click", (e) => {
+  if (dragging) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+}, true);
+
 
 track.style.willChange = "transform";
 
@@ -207,7 +217,7 @@ document.querySelectorAll(".typewriter").forEach(el => {
     const full = el.dataset.text ?? el.textContent;
     el.textContent = ""; // start empty
 
-    const delayMs = 2700;     // start delay
+    const delayMs = 2600;     // start delay
     const msPerChar = 70;    // typing speed
 
     let i = 0;
