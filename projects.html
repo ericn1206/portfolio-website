@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style_projects.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+    <main class="page">
+
+    <nav id="desktop-nav">
+        <ul class="nav-links">
+            <li class="logo"><a href="index.html">{eric nguyen}</a></li>
+            <li class="link-in-nav"><a href="index.html">index</a></li>
+            <li class="link-in-nav"><a href="#" style="color:red;">projects</a></li>
+            <li class="link-in-nav"><a href="#experience">experience</a></li>
+            <li class="link-in-nav"><a href="#experience">pics</a></li>
+        </ul>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo"><a href="https://www.linkedin.com/in/ericnguyen6/">{eric nguyen}</a></div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+            <div class="menu-close" onclick="toggleMenu()">×</div>
+            <ul>    
+                <li><a href="#" onclick="toggleMenu()" style="color:red;">index</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">projects</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">experience</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">pics</a></li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="glass-card">
+        <h2>Project Enginuity</h2>
+        <div class="carousel" data-carousel>
+            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
+
+            <div class="car-track" data-track>
+            <img class="car-slide is-active" src="assets/project_engenuity_snapshot.png" alt="Project screenshot 1">
+            <img class="car-slide" src="images/p1-2.jpg" alt="Project screenshot 2">
+            <img class="car-slide" src="images/p1-3.jpg" alt="Project screenshot 3">
+            <img class="car-slide" src="images/p1-4.jpg" alt="Project screenshot 4">
+
+            </div>
+
+            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
+
+            <div class="car-dots" data-dots>
+            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
+            <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
+            <button type="button" class="dot" data-dot="2" aria-label="Go to slide 3"></button>
+                        <button type="button" class="dot" data-dot="2" aria-label="Go to slide 4"></button>
+
+            </div>
+       
+        </div>
+        <p class="muted">Short description</p>
+
+         <div class="card-actions">
+            <a href="#">Demo</a>
+            <a href="#">GitHub</a>
+         </div>
+
+    </div>
+
+
+    <section class="socials">
+        <a href="https://www.linkedin.com/in/ericnguyen6/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ericn1206" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="mailto:eric_nguyen@berkeley.edu" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+     </section>
+    <footer>
+      <p>&#169; 2026 eric nguyen</p>
+    </footer>
+    </main>
+
+    <script src="script_project.js"></script>
+  </body>
+</html>

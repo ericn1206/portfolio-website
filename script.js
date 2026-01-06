@@ -115,8 +115,18 @@ carousel.addEventListener(
 // MOBILE!!: drag/swipe support 
 let dragPaused = false;
 let dragging = false;
+let pointerDown = false;
+
 let startX = 0;
 let startTranslateX = 0;
+let activePointerId = null;
+
+const DRAG_THRESHOLD = 8; // pixels
+
+
+function isInteractive(el) {
+  return el.closest("a, button, input, textarea, select, label");
+}
 
 function isPaused() {
     // replace your hover check: hover only matters on devices that support hover
@@ -129,38 +139,60 @@ function isPaused() {
 // allow horizontal gestures. do not let browser treat it as page scroll
 carousel.style.touchAction = "pan-y"; // allow vertical page scroll
 
-carousel.addEventListener("pointerdown", (e) => {
-    dragging = true;
-    dragPaused = true;
-    carousel.setPointerCapture(e.pointerId);
 
+carousel.addEventListener("pointerdown", (e) => {
+    if (isInteractive(e.target)) return;
+
+    pointerDown = true;
+    dragging = false;          // not dragging yet
+    dragPaused = true;
+
+    activePointerId = e.pointerId;
     startX = e.clientX;
-    startTranslateX = x; // x is current translate value
+    startTranslateX = x;
 });
 
 track.style.willChange = "transform";
 
 carousel.addEventListener("pointermove", (e) => {
-    if (!dragging) return;
+    if (!pointerDown || e.pointerId !== activePointerId) return;
 
-        const dx = e.clientX - startX;
+    const dx = e.clientX - startX;
 
-        // drag moves opposite direction 
-        x = startTranslateX + dx;
+    // Don't start dragging until user moves enough (so taps still click)
+    if (!dragging) {
+        if (Math.abs(dx) < DRAG_THRESHOLD) return;
 
-        wrap();
-        track.style.transform = `translateX(${x}px)`;
+        dragging = true;
+        carousel.setPointerCapture(activePointerId);
+    }
+
+    // Now we're officially draggin
+    e.preventDefault();
+    x = startTranslateX + dx;
+    wrap();
+    track.style.transform = `translateX(${x}px)`;
 });
 
 function endDrag(e) {
-    if (!dragging) return;
-    dragging = false;
+    if (e.pointerId !== activePointerId) return;
 
-    // small delay before auto resumes (feels nicer)
-    setTimeout(() => {
+    pointerDown = false;
+
+    if (dragging) {
+        dragging = false;
+        // small delay before auto resumes
+        setTimeout(() => {
         dragPaused = false;
-        last = performance.now(); // avoid jump
-    }, 200);
+        last = performance.now();
+        }, 200);
+    } else {
+        // it was a tap (so therefore not a drag), resume immediately
+        dragPaused = false;
+        last = performance.now();
+    }
+
+    activePointerId = null;
 }
 
 carousel.addEventListener("pointerup", endDrag);

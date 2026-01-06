@@ -18,9 +18,9 @@
 
     <nav id="desktop-nav">
         <ul class="nav-links">
-            <li class="logo"><a href="https://www.linkedin.com/in/ericnguyen6/">{eric nguyen}</a></li>
+            <li class="logo"><a href="index.html">{eric nguyen}</a></li>
             <li class="link-in-nav"><a href="#" style="color:red;">index</a></li>
-            <li class="link-in-nav"><a href="#projects">projects</a></li>
+            <li class="link-in-nav"><a href="projects.html">projects</a></li>
             <li class="link-in-nav"><a href="#experience">experience</a></li>
             <li class="link-in-nav"><a href="#experience">pics</a></li>
         </ul>
@@ -37,7 +37,7 @@
             <div class="menu-close" onclick="toggleMenu()">×</div>
             <ul>    
                 <li><a href="#" onclick="toggleMenu()" style="color:red;">index</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">projects</a></li>
+                <li><a href="projects.html" onclick="toggleMenu()">projects</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">experience</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">pics</a></li>
             </ul>
@@ -57,7 +57,7 @@
     
         <div class="projects-header">
         <span class="projects-label">projects showcase:</span>
-        <a href="/projects" class="projects-btn about-me">see all projects</a>
+        <a href="projects.html" class="projects-btn about-me">see all projects</a>
         </div>
 
     </section>
@@ -68,36 +68,62 @@
 
         <div class="carousel-track" id="track">
             <!-- original slides -->
-            <a class="slide"
-            href="#experience"
-            data-title="project enginuity - unity, c#"
-            data-desc="a bridge-building simulation for middle school classrooms. designed for teachers to integrate into lessons.">
-            <img src="assets/project_engenuity_snapshot.png" alt="">
-            </a>
-
-            <a class="slide"
-                href="#experience"
+             <a class="slide"
+                href="projects.html"
                 data-title="quantum cryptography - arduino, cad, c++"
-                data-desc="photonics model of bb84 quantum protocol. ucsd cosmos 2024">
+                data-desc="photonics model of bb84 quantum protocol (ucsd cosmos 2024)">
                 <img src="assets/quant2.png" alt="">
             </a>
 
-            <a class="slide" href="#experience"></a>
-            <!-- dups (same as above) -->
             <a class="slide"
-                href="#experience"
-            data-title="project enginuity - unity, c#"
-                data-desc="a bridge-building simulation for middle school classrooms. designed for teachers to integrate into lessons.">
+                href="projects.html"
+                data-title="project enginuity - unity, c#"
+                data-desc="a bridge-building simulation for middle school classrooms">
                 <img src="assets/project_engenuity_snapshot.png" alt="">
             </a>
 
             <a class="slide"
-                href="#experience"
+                href="projects.html"
+                data-title="ants vs. some bees - python"
+                data-desc="a tower defense game inspired by plants vs. zombies (cs61a)">
+                <img src="assets/ants.png" alt="">
+            </a>
+
+            <a class="slide"
+                href="projects.html"
+                data-title="scheme interpreter - python"
+                data-desc="an interpreter for the scheme language written in python (cs61a)">
+                <img src="assets/schememon.png" alt="">
+            </a>
+
+            <!-- dups (same as above) -->
+           <a class="slide"
+                href="projects.html"
                 data-title="quantum cryptography - arduino, cad, c++"
-                data-desc="photonics model of bb84 quantum protocol. ucsd cosmos 2024">
+                data-desc="photonics model of bb84 quantum protocol (ucsd cosmos 2024)">
                 <img src="assets/quant2.png" alt="">
             </a>
-            <a class="slide" href="#experience"></a>
+           
+            <a class="slide"
+                href="projects.html"
+                data-title="project enginuity - unity, c#"
+                data-desc="a bridge-building simulation for middle school classrooms">
+                <img src="assets/project_engenuity_snapshot.png" alt="">
+            </a>
+
+            <a class="slide"
+                href="projects.html"
+                data-title="ants vs. some bees - python"
+                data-desc="a tower defense game inspired by plants vs. zombies (cs61a)">
+                <img src="assets/ants.png" alt="">
+            </a>
+
+            <a class="slide"
+                href="projects.html"
+                data-title="scheme interpreter - python"
+                data-desc="an interpreter for the scheme language written in python (cs61a)">
+                <img src="assets/schememon.png" alt="">
+            </a>
         </div>
     </div>
     </section>
@@ -108,16 +134,17 @@
     </section>
     
     <section class="socials">
-            <a href="https://www.linkedin.com/in/ericnguyen6/" target="_blank" aria-label="LinkedIn">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/ericn1206" target="_blank" aria-label="GitHub">
-                <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="mailto:eric_nguyen@berkeley.edu" aria-label="Email">
-                <i class="fa-solid fa-envelope"></i>
-            </a>
-            </section>
+        <a href="https://www.linkedin.com/in/ericnguyen6/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin fa-fw"></i>
+        </a>
+        <a href="https://github.com/ericn1206" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github fa-fw"></i>
+        </a>
+        <a href="mailto:eric_nguyen@berkeley.edu" aria-label="Email">
+            <i class="fa-solid fa-envelope fa-fw"></i>
+        </a>
+
+    </section>
     <footer>
       <p>&#169; 2026 eric nguyen</p>
     </footer>

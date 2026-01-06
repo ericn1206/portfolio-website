@@ -91,24 +91,74 @@ body {
 }
 
 .socials {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 0.1rem;
-    margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.5rem;
 }
 
+/* glass pill */
 .socials a {
-    font-size: 1.4rem;
-    color: rgb(120, 120, 120);
-    transition: transform 0.2s ease, color 0.2s ease;
-    scale: 1.05;
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+
+  /* keep the rest of your glass styles */
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+
+  font-size: 1.4rem;
+  color: rgba(120, 120, 120, 0.85);
+
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(12px) saturate(145%);
+  -webkit-backdrop-filter: blur(12px) saturate(145%);
+  border: 2px solid rgba(255, 255, 255, 0.37);
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.socials a:hover {
+  color: rgb(252, 72, 72);
+
+  background: rgba(255, 120, 120, 0.28);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border-color: rgba(251, 89, 89, 0.95);
+
+  box-shadow:
+    0 10px 26px rgba(235, 37, 37, 0.28),
+    inset 0 1px 0 rgba(255, 220, 220, 0.6);
+
+  transform: translateY(-2px);
+}
+.socials a i,
+.socials a i::before {
+  display: block;
+  line-height: 1;
+}
+.socials a {
+  line-height: 0;
 }
 
-.socials a:hover {
-    color: rgb(235, 37, 37);
-    transform: translateY(-2px);
-}
+.socials a .fa-linkedin { transform: translateX(0.6px); }
+.socials a .fa-github   { transform: translateX(0.5px); }
+.socials a .fa-envelope { transform: translateX(0.5px); }
+
+
 
 html {
     scroll-behavior: smooth;
@@ -140,6 +190,7 @@ h1 {
     text-decoration-color: red;
     text-underline-offset: 5px;
     font-size: clamp(1.8rem, 4vw, 2.3rem);
+    margin-top: 0.75rem;
 
 }
 
@@ -189,15 +240,31 @@ a,
 
 /* Desktop Nav */
 #desktop-nav{
-    top: 0;
-    width: 100%;
-    height: 7vh;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    letter-spacing: 1.25px;
-    /*border-top: 1.25px solid lightgray;
-    border-bottom: 1.25px solid lightgray;*/
+    position: sticky;
+  top: 12px;                 /* space from top so pill is visible */
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+
+  height: 56px;
+  width: fit-content;
+  padding: 0 24px;
+  margin: 0 auto;            /* center pill */
+
+  letter-spacing: 1.25px;
+
+  /* pill shape */
+  border-radius: 999px;
+
+  /* frosted glass */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  /* subtle lift */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
 .carousel {
@@ -217,7 +284,8 @@ a,
 }
 
 .carousel-viewport {
-    overflow: hidden;
+    z-index: -1;
+
     border: 3px solid transparent;
     scroll-behavior: smooth;
 
@@ -252,13 +320,12 @@ a,
     overscroll-behavior: contain;
     touch-action: pan-y;      /* allow vertical scroll*/
     -webkit-overflow-scrolling: touch;
-    
 
 }
 
 .carousel-viewport:hover {
-    background-color: rgb(200, 200, 200);
-
+    background-color: rgb(213, 181, 181);
+    border-color: rgba(247, 234, 234, 0.5);
 
 }
 .carousel-wrapper {
@@ -306,7 +373,7 @@ a,
 }
 /* when carousel is active */
 .carousel.hovering .slide {
-    filter: blur(0px) grayscale(90%);
+    filter: blur(0px) grayscale(95%);
 }
 
 /* keep hovered slide sharp */
@@ -316,7 +383,7 @@ a,
 }
 
 .slide {
-    flex: 0 0 calc(35% - 1rem);  /* 3 cards per view with gap */
+    flex: 0 0 calc(35% - 1rem);  /* ~3 cards per view with gap */
     height: 220px;
     width: 240px;
     overflow: hidden;
@@ -332,6 +399,7 @@ a,
     border-radius: 6px;
     user-select: none;
     
+    -webkit-user-drag: none; /* Prevents ghost image dragging */
     -webkit-user-select: none; /* Safari, Chrome */
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* Internet Explorer 10+ */
@@ -339,19 +407,44 @@ a,
 
     border-top: 1.5px solid rgb(60, 60, 60);
     border-bottom: 3px solid rgb(60, 60, 60);
-    border-color: rgb(60, 60, 60);
+    border-color: rgb(34, 34, 34);
     box-sizing: border-box;
 
     transition: filter 0.25s ease, transform 0.25s ease;
+
 }
 
 
 .slide:hover {
-    border: 5px solid rgb(60, 60, 60);
+  border: 5px solid rgba(244, 73, 73, 0.8);
+  border-radius: 4px;
 
-    border-color: rgb(255, 103, 103);
+  background: rgba(255, 84, 84, 0.22);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
 
+  box-shadow:
+    0 5px 12px rgba(255, 84, 84, 0.35),
+    0 14px 30px rgba(255, 84, 84, 0.28);
+
+  transform: translateY(-2px);
 }
+
+.slide:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+
+  /* red-tinted glass rim */
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 84, 84, 0.55),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 2px rgba(120, 0, 0, 0.35);
+}
+
+
 
 .slide img {
     width: 100%;
@@ -359,31 +452,9 @@ a,
     opacity: 1;
     display: flex;
     object-fit: cover;
-    filter: saturate(95%)
-
+    filter: saturate(95%);
+    pointer-events: none; /* ensures the click goes through the image to the <a> tag */
 }
-.slide img:hover {
-        filter: grayscale(0%);
-
-}
-.slide .slide-overlay {
-    position: absolute;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.60);
-    color: #000;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
-    text-align: center;
-}
-
 
 
 .projects-header {
@@ -402,24 +473,52 @@ a,
     text-underline-offset: 4px; 
 }
 
-
 .projects-btn {
-    margin-left: auto;      
-    width: fit-content; 
-    padding: 6px 16px;
-    border: 1.5px solid black;
-    border-radius: 999px;
-    text-decoration: none;
-    color: black;
-    font-size: 0.95rem;
-    text-overflow: clip;
-    text-align: center;
+  margin-left: auto;
+  width: fit-content;
+  padding: 6px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-align: center;
+
+    color: rgb(45, 45, 45);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+
+
+  /* pill shape */
+  border-radius: 999px;
+
+  /* frosted glass */
+  background: rgba(250, 250, 250, 0.75);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1.75px solid rgb(255, 255, 255);
+
+  /* subtle lift */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 .projects-btn:hover {
-    border-color: rgb(212, 35, 35);
-    color: rgb(235, 35, 35);
-    background-color: rgb(241, 198, 198);
+  color: rgb(235, 35, 35);
+
+  background: rgba(251, 151, 151, 0.411);
+
+  /* less backdrop effect */
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+
+  border-color: rgba(249, 5, 5, 0.55);
+
+  box-shadow: 0 5px 11px rgba(255, 0, 0, 0.3);
+
+  transform: translateY(-1px);
 }
+
 
 .link-in-nav a {
     display: block;
@@ -469,18 +568,19 @@ nav {
     font-size: 1.3rem;
     font-weight: 700;
     align-items: center;     
-    margin-right: auto;
-    border-radius: 12px 4px 12px 4px;
+    margin-right: 10rem;
+    border-radius: 14px;
     /*
     border: 3px solid black;
     border-radius: 12px;
-    */
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    */    
+  /*  border: 1px solid transparent;*/
+
+    transition: background-color 0.05s ease, border-color 0.05s ease, transform 0.2s ease, color 0.2s ease;
 }
 .logo:hover {
-    background-color: rgb(252, 193, 193);
-    cursor: pointer;
-    border-color: rgb(206, 0, 0);   
+   color: rgb(235, 35, 35);
+  
 }
 .logo:hover a {
     color: rgb(239, 65, 65);   
