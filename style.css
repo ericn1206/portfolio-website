@@ -29,7 +29,7 @@ body {
     font-weight: 500;
     margin: 0;
     letter-spacing: 1px;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(237, 237, 240);
     min-height: 100svh;
     flex-direction: column;
     font-size: clamp(12px, 1.2vw, 16px);
@@ -37,12 +37,11 @@ body {
 }
 
 .page {
-    max-width: 700px;   
-    margin: 0 auto;      
-    padding: 0 clamp(1rem, 5vw, 17rem);
-    z-index: 1;
-    min-height: 100svh;
-    flex: 1;
+  width: min(850px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 17rem);
+  min-height: 100svh;
+  flex: 1;
 }
 
 /* INITIAL STATE */
@@ -237,7 +236,9 @@ a,
 .btn {
     transition: all 300ms ease;
 }
-
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 /* Desktop Nav */
 #desktop-nav{
     position: sticky;
@@ -248,9 +249,11 @@ a,
   align-items: center;
 
   height: 56px;
-  width: fit-content;
-  padding: 0 24px;
-  margin: 0 auto;            /* center pill */
+ width: calc(100% - 2rem);
+  max-width: 1100px;
+  margin: 0 auto;
+
+  padding: 0 clamp(12px, 2vw, 24px);
 
   letter-spacing: 1.25px;
 
@@ -568,7 +571,7 @@ nav {
     font-size: 1.3rem;
     font-weight: 700;
     align-items: center;     
-    margin-right: 10rem;
+    margin-right: auto;
     border-radius: 14px;
     /*
     border: 3px solid black;
@@ -597,6 +600,32 @@ a {
 
 #hamburger-nav {
     display: none;
+      position: sticky;
+  top: 15px;                 /* space from top so pill is visible */
+  z-index: 9999;
+    min-width: 100%;
+  width: 100%;
+
+
+  align-items: center;
+
+  height: 56px;
+  padding: 0 24px;
+  margin: 0 auto;            /* center pill */
+
+  letter-spacing: 1.25px;
+
+  /* pill shape */
+  border-radius: 999px;
+
+  /* frosted glass */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  /* subtle lift */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
 .hamburger-menu {
@@ -611,6 +640,7 @@ a {
     height: 16px;
     width: 20px;
     cursor: pointer;
+    margin-left: auto;
 }
 
 .hamburger-icon span {
@@ -628,7 +658,17 @@ a {
     height: 100vh;
     width: 280px;          
 
-    background-color: rgb(230,229,229);
+ /* 🔮 glass */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+
+  border-left: 3px solid rgba(255, 255, 255, 0.85);
+
+  /* depth */
+  box-shadow:
+    -12px 0 28px rgba(0, 0, 0, 0.18),
+    inset 1px 0 0 rgba(255, 255, 255, 0.55);
 
     transform: translateX(150%);    /* hidden off-screen */
     transition: transform 0.3s ease;
