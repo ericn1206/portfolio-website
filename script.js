@@ -122,29 +122,7 @@ let startTranslateX = 0;
 let activePointerId = null;
 
 const DRAG_THRESHOLD = 8; // pixels
-let savedBodyOverflow = "";
-let savedTouchAction = "";
 
-// helpers
-function lockPageScroll() {
-  savedBodyOverflow = document.body.style.overflow;
-  document.body.style.overflow = "hidden";
-}
-
-function unlockPageScroll() {
-  document.body.style.overflow = savedBodyOverflow || "";
-}
-
-function setTouchAction(val) {
-  // touch-action mainly matters for touch/pen, but still good to flip for consistency
-  if (!savedTouchAction) savedTouchAction = carousel.style.touchAction;
-  carousel.style.touchAction = val;
-}
-
-function restoreTouchAction() {
-  carousel.style.touchAction = savedTouchAction || "pan-y";
-  savedTouchAction = "";
-}
 
 function isInteractive(el) {
   return el.closest("a, button, input, textarea, select, label");
@@ -161,44 +139,51 @@ function isPaused() {
 // allow horizontal gestures. do not let browser treat it as page scroll
 carousel.style.touchAction = "pan-y"; // allow vertical page scroll
 
-// ---- UPDATE your pointerdown ----
+
 carousel.addEventListener("pointerdown", (e) => {
-  if (isInteractive(e.target)) return;
+    if (isInteractive(e.target)) return;
 
-  pointerDown = true;
-  dragging = false;
-  dragPaused = true;
+    pointerDown = true;
+    dragging = false;          // not dragging yet
+    dragPaused = true;
 
-  activePointerId = e.pointerId;
-  startX = e.clientX;
-  startTranslateX = x;
+    activePointerId = e.pointerId;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    startTranslateX = x;
 });
-
-// ---- UPDATE your pointermove ----
 carousel.addEventListener("pointermove", (e) => {
   if (!pointerDown || e.pointerId !== activePointerId) return;
 
   const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
 
+  // don't decide too early (so taps still click)
   if (!dragging) {
+    // if user is moving vertically more than horizontally, let page scroll
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > DRAG_THRESHOLD) {
+      dragPaused = false;
+      pointerDown = false;
+      activePointerId = null;
+      return;
+    }
+
+    // only start dragging if horizontal movement is real
     if (Math.abs(dx) < DRAG_THRESHOLD) return;
 
-    // confirmed drag
     dragging = true;
     carousel.setPointerCapture(activePointerId);
-
-    // IMPORTANT: prevent vertical page scroll while dragging
-    lockPageScroll();
-    setTouchAction("none");
   }
 
+  // once we're dragging horizontally, block page scroll
   e.preventDefault();
+
   x = startTranslateX + dx;
   wrap();
   track.style.transform = `translateX(${x}px)`;
 });
 
-// ---- UPDATE endDrag to restore scrolling ----
 function endDrag(e) {
   if (e.pointerId !== activePointerId) return;
 
@@ -206,9 +191,6 @@ function endDrag(e) {
 
   if (dragging) {
     dragging = false;
-    unlockPageScroll();
-    restoreTouchAction();
-
     setTimeout(() => {
       dragPaused = false;
       last = performance.now();
@@ -224,6 +206,8 @@ function endDrag(e) {
 carousel.addEventListener("pointerup", endDrag);
 carousel.addEventListener("pointercancel", endDrag);
 carousel.addEventListener("lostpointercapture", endDrag);
+
+
 requestAnimationFrame(step);
 
 // TYPEWRITER ANIMATION THINGY
