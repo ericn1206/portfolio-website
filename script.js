@@ -22,12 +22,6 @@ let hoverPaused = false;
 let tabPaused = document.hidden;
 let wheelPaused = false;
 
-function isPaused() {
-    // if hovered, ALWAYS paused
-    const hovered = carousel.matches(":hover");
-    return hovered || tabPaused || wheelPaused;
-}
-
 function wrap() {
     const halfWidth = track.scrollWidth / 2;
     if (halfWidth <= 0) return;
@@ -118,6 +112,8 @@ let dragging = false;
 let pointerDown = false;
 
 let startX = 0;
+let startY = 0;
+
 let startTranslateX = 0;
 let activePointerId = null;
 
@@ -149,30 +145,41 @@ carousel.addEventListener("pointerdown", (e) => {
 
     activePointerId = e.pointerId;
     startX = e.clientX;
+      startY = e.clientY;
+
     startTranslateX = x;
 });
 
 track.style.willChange = "transform";
-
-carousel.addEventListener("pointermove", (e) => {
+carousel.addEventListener(
+  "pointermove",
+  (e) => {
     if (!pointerDown || e.pointerId !== activePointerId) return;
 
     const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
 
-    // Don't start dragging until user moves enough (so taps still click)
+    // if not dragging yet, decide if this is a horizontal drag
     if (!dragging) {
-        if (Math.abs(dx) < DRAG_THRESHOLD) return;
+      // if user is moving more vertically, let the page scroll
+      if (Math.abs(dy) > Math.abs(dx)) return;
 
-        dragging = true;
-        carousel.setPointerCapture(activePointerId);
+      // still need enough horizontal movement to count
+      if (Math.abs(dx) < DRAG_THRESHOLD) return;
+
+      dragging = true;
+      carousel.setPointerCapture(activePointerId);
     }
 
-    // Now we're officially draggin
+    // NOW block the browser scroll and drag the carousel
     e.preventDefault();
+
     x = startTranslateX + dx;
     wrap();
     track.style.transform = `translateX(${x}px)`;
-});
+  },
+  { passive: false }
+);
 
 function endDrag(e) {
     if (e.pointerId !== activePointerId) return;

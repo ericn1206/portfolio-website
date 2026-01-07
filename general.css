@@ -41,6 +41,7 @@ body {
   min-height: 100svh;
   flex: 1;
 padding-inline: clamp(1rem, 4vw, 3rem);
+
 }
 
 /* INITIAL STATE */
@@ -441,7 +442,6 @@ footer {
     padding: 2rem 0;
     padding-top: 0.3rem;  
     margin-top: 0;   
-    bottom:0;
 }
 
 footer p {

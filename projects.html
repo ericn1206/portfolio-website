@@ -7,7 +7,6 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="general.css"/>
     <link rel="stylesheet" href="style_projects.css" />
-
     <link rel="stylesheet" href="mediaqueries.css" />
     <link
     rel="stylesheet"
@@ -28,7 +27,7 @@
         </ul>
     </nav>
     <nav id="hamburger-nav">
-      <div class="logo"><a href="https://www.linkedin.com/in/ericnguyen6/">{eric nguyen}</a></div>
+      <div class="logo"><a href="index.html">{eric nguyen}</a></div>
       <div class="hamburger-menu">
         <div class="hamburger-icon" onclick="toggleMenu()">
           <span></span>
@@ -38,8 +37,8 @@
         <div class="menu-links">
             <div class="menu-close" onclick="toggleMenu()">×</div>
             <ul>    
-                <li><a href="#" onclick="toggleMenu()" style="color:red;">index</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">projects</a></li>
+                <li><a href="index.html" onclick="toggleMenu()">index</a></li>
+                <li><a href="#" onclick="toggleMenu()" style="color:red;">projects</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">experience</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">pics</a></li>
             </ul>
@@ -47,16 +46,19 @@
       </div>
     </nav>
 
-    <div class="glass-card" style="margin-top: 2rem;">
-        <h2>Project Enginuity</h2>
+    <div class="glass-card">
+        <div class="title-row">
+          <h2 class="title">project enginuity: civil structures</h2>
+          <h2 class="tech">[unity, c#]</h2>
+        </div>
+
         <div class="carousel" data-carousel>
             <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
 
             <div class="car-track" data-track>
-            <img class="car-slide is-active" src="assets/project_engenuity_snapshot.png" alt="Project screenshot 1">
-            <img class="car-slide" src="images/p1-2.jpg" alt="Project screenshot 2">
-            <img class="car-slide" src="images/p1-3.jpg" alt="Project screenshot 3">
-            <img class="car-slide" src="images/p1-4.jpg" alt="Project screenshot 4">
+            <img class="car-slide is-active" src="assets/proj1.png" alt="Project screenshot 1">
+            <img class="car-slide" src="assets/proj2.png" alt="Project screenshot 2">
+            <img class="car-slide" src="assets/proj3.png" alt="Project screenshot 3">
 
             </div>
 
@@ -66,52 +68,154 @@
             <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
             <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
             <button type="button" class="dot" data-dot="2" aria-label="Go to slide 3"></button>
-                        <button type="button" class="dot" data-dot="2" aria-label="Go to slide 4"></button>
 
             </div>
        
         </div>
-        <p class="muted">Short description</p>
+        <p class="muted"> project enginuity: civil structures is an interactive bridge-building simulation that teaches middle school students foundational civil engineering principles and physics concepts like tension and compression. its goal is to democratize access to hands-on STEM learning by making engineering exploration possible anywhere, with just a laptop.
+        </p>
 
-         <div class="card-actions">
-            <a href="#">Demo</a>
-            <a href="#">GitHub</a>
-         </div>
-
-    </div>
-  <div class="glass-card" style="margin-top: 2rem;">
-          <h2>Project Enginuity</h2>
-          <div class="carousel" data-carousel>
-              <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
-
-              <div class="car-track" data-track>
-              <img class="car-slide is-active" src="assets/project_engenuity_snapshot.png" alt="Project screenshot 1">
-              <img class="car-slide" src="images/p1-2.jpg" alt="Project screenshot 2">
-              <img class="car-slide" src="images/p1-3.jpg" alt="Project screenshot 3">
-              <img class="car-slide" src="images/p1-4.jpg" alt="Project screenshot 4">
-
-              </div>
-
-              <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
-
-              <div class="car-dots" data-dots>
-              <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
-              <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
-              <button type="button" class="dot" data-dot="2" aria-label="Go to slide 3"></button>
-                          <button type="button" class="dot" data-dot="2" aria-label="Go to slide 4"></button>
-
-              </div>
-        
+        <div class="card-actions-row">
+          <div class="card-actions">
+            <a href="https://projectenginuity.itch.io/civil-structures">itch.io</a>
           </div>
-          <p class="muted">Short description</p>
 
           <div class="card-actions">
-              <a href="#">Demo</a>
-              <a href="#">GitHub</a>
+            <a href="https://github.com/ericn1206/Project-Engenuity_Civil-Structures">github</a>
+          </div>
+          <h3>March 2025</h3>
+        </div>
+    </div>
+    
+
+    <div class="glass-card">
+        <div class="title-row">
+          <h2 class="title">quantum cryptography: bb84</h2>
+          <h2 class="tech">[arduino, cad, c++]</h2>
+        </div>
+
+        <div class="carousel" data-carousel>
+            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
+
+            <div class="car-track" data-track>
+            <img class="car-slide is-active" src="assets/quant5.png" alt="Project screenshot 1">
+            <img class="car-slide" src="assets/quant3.png" alt="Project screenshot 2">
+            <img class="car-slide" src="assets/quant4.png" alt="Project screenshot 3">
+            <img class="car-slide" src="assets/quantum.jpg" alt="Project screenshot 4">
+
+            </div>
+
+            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
+
+            <div class="car-dots" data-dots>
+            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
+            <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
+            <button type="button" class="dot" data-dot="2" aria-label="Go to slide 3"></button>
+            <button type="button" class="dot" data-dot="3" aria-label="Go to slide 4"></button>
+
+            </div>
+       
+        </div>
+        <p class="muted"> this project is a photonics model of an autonomous quantum cryptography system, built to improve the efficiency of key generation.
+          we used the bb84 protocol for quantum key distribution (QKD) by transmiting laser pulses with different polarization states through wave plates and a 
+          polarizing beam splitter to determine transmitted bits. 
+
+        </p>
+
+        <div class="card-actions-row">
+
+          <div class="card-actions">
+            <a href="https://github.com/ericn1206/Project-Engenuity_Civil-Structures">github</a>
           </div>
 
-      </div>
+          <div class="card-actions">
+            <a href="https://docs.google.com/presentation/d/1DnNd8W06i1qBbEpZSTSjgLxl3xcrzXQIn0giFYaU6QI/edit?usp=sharing">slides</a>
+          </div>
 
+          <h3>August 2024</h3>
+        </div>
+    </div>
+
+
+    <div class="glass-card">
+        <div class="title-row">
+          <h2 class="title">ants vs. some bees</h2>
+          <h2 class="tech">[python]</h2>
+        </div>
+
+        <div class="carousel" data-carousel>
+            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
+
+            <div class="car-track" data-track>
+            <img class="car-slide is-active" src="assets/ants.png" alt="Project screenshot 1">
+            <img class="car-slide" src="assets/ants2.png" alt="Project screenshot 2">
+
+            </div>
+
+            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
+
+            <div class="car-dots" data-dots>
+            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
+            <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
+
+            </div>
+       
+        </div>
+        <p class="muted"> a tower-defense game inspired by plants vs. zombies, designed by cs61a instructors. 
+          users place ants on a grid, who must protect their queen from invading bees. i used object-oriented programming and functional programming 
+          to program the various interactions between ants and bees. 
+          </p>
+
+        <div class="card-actions-row">
+  
+
+          <div class="card-actions">
+            <a href="https://github.com/ericn1206/Project-Engenuity_Civil-Structures">github</a>
+          </div>
+          <h3>November 2025</h3>
+        </div>
+    </div>
+
+
+
+    <div class="glass-card">
+        <div class="title-row">
+          <h2 class="title">scheme interpreter</h2>
+          <h2 class="tech">[python]</h2>
+        </div>
+
+        <div class="carousel" data-carousel>
+          <!-- 
+            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
+          -->
+            <div class="car-track" data-track>
+            <img class="car-slide is-active" src="assets/scheme_interp.png" alt="Project screenshot 1">
+
+
+            </div>
+            <!---
+
+            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
+
+            <div class="car-dots" data-dots>
+            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
+
+
+            </div>
+          -->
+       
+        </div>
+        <p class="muted"> this project is an interpreter for a subset of the scheme language, written using python. the intepreter follows a functional programing model that includes scheme's syntaxs, eval rules, and built-in procedures. 
+          </p>
+
+        <div class="card-actions-row">
+
+          <div class="card-actions">
+            <a href="https://github.com/ericn1206/Project-Engenuity_Civil-Structures">github</a>
+          </div>
+          <h3>November 2025</h3>
+        </div>
+    </div>
 
     <section class="socials">
         <a href="https://www.linkedin.com/in/ericnguyen6/" target="_blank" aria-label="LinkedIn">
