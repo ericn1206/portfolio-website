@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="general.css"/>
+    <link rel="stylesheet" href="style_projects.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+    <main class="page">
+
+    <nav id="desktop-nav">
+        <ul class="nav-links">
+            <li class="logo"><a href="index.html">{eric nguyen}</a></li>
+            <li class="link-in-nav"><a href="index.html">index</a></li>
+            <li class="link-in-nav"><a href="projects.html">projects</a></li>
+            <li class="link-in-nav"><a href="#" style="color:red;">experience</a></li>
+            <li class="link-in-nav"><a href="#experience">pics</a></li>
+        </ul>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo"><a href="index.html">{eric nguyen}</a></div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+            <div class="menu-close" onclick="toggleMenu()">×</div>
+            <ul>    
+                <li><a href="index.html" onclick="toggleMenu()">index</a></li>
+                <li><a href="projects.html" onclick="toggleMenu()">projects</a></li>
+                <li><a href="#" onclick="toggleMenu()" style="color:red;">experience</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">pics</a></li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <h3 style="margin-top: 10rem; margin-bottom: 20rem; text-align: center;">please employ me</h3>
+
+    <section class="socials">
+        <a href="https://www.linkedin.com/in/ericnguyen6/" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ericn1206" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="mailto:eric_nguyen@berkeley.edu" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+     </section>
+    <footer>
+      <p>&#169; 2026 eric nguyen</p>
+    </footer>
+    </main>
+
+    <script src="script_project.js"></script>
+  </body>
+</html>

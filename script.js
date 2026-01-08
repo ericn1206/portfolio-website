@@ -106,106 +106,7 @@ carousel.addEventListener(
     { passive: false }
 );
 
-// MOBILE!!: drag/swipe support 
-let dragPaused = false;
-let dragging = false;
-let pointerDown = false;
-
-let startX = 0;
-let startY = 0;
-
-let startTranslateX = 0;
-let activePointerId = null;
-
-const DRAG_THRESHOLD = 8; // pixels
-
-
-function isInteractive(el) {
-  return el.closest("a, button, input, textarea, select, label");
-}
-
-function isPaused() {
-    // replace your hover check: hover only matters on devices that support hover
-    const canHover = window.matchMedia("(hover: hover)").matches;
-    const hovered = canHover ? carousel.matches(":hover") : false;
-
-    return hovered || tabPaused || wheelPaused || dragPaused;
-}
-
-// allow horizontal gestures. do not let browser treat it as page scroll
-carousel.style.touchAction = "pan-y"; // allow vertical page scroll
-
-
-carousel.addEventListener("pointerdown", (e) => {
-    if (isInteractive(e.target)) return;
-
-    pointerDown = true;
-    dragging = false;          // not dragging yet
-    dragPaused = true;
-
-    activePointerId = e.pointerId;
-    startX = e.clientX;
-      startY = e.clientY;
-
-    startTranslateX = x;
-});
-
 track.style.willChange = "transform";
-carousel.addEventListener(
-  "pointermove",
-  (e) => {
-    if (!pointerDown || e.pointerId !== activePointerId) return;
-
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-
-    // if not dragging yet, decide if this is a horizontal drag
-    if (!dragging) {
-      // if user is moving more vertically, let the page scroll
-      if (Math.abs(dy) > Math.abs(dx)) return;
-
-      // still need enough horizontal movement to count
-      if (Math.abs(dx) < DRAG_THRESHOLD) return;
-
-      dragging = true;
-      carousel.setPointerCapture(activePointerId);
-    }
-
-    // NOW block the browser scroll and drag the carousel
-    e.preventDefault();
-
-    x = startTranslateX + dx;
-    wrap();
-    track.style.transform = `translateX(${x}px)`;
-  },
-  { passive: false }
-);
-
-function endDrag(e) {
-    if (e.pointerId !== activePointerId) return;
-
-    pointerDown = false;
-
-    if (dragging) {
-        dragging = false;
-        // small delay before auto resumes
-        setTimeout(() => {
-        dragPaused = false;
-        last = performance.now();
-        }, 200);
-    } else {
-        // it was a tap (so therefore not a drag), resume immediately
-        dragPaused = false;
-        last = performance.now();
-    }
-
-    activePointerId = null;
-}
-
-carousel.addEventListener("pointerup", endDrag);
-carousel.addEventListener("pointercancel", endDrag);
-carousel.addEventListener("lostpointercapture", endDrag);
-
 
 requestAnimationFrame(step);
 
@@ -232,6 +133,127 @@ const slides = document.querySelectorAll(".slide");
 const title = document.getElementById("info-title");
 const desc = document.getElementById("info-desc");
 
+function isPaused() {
+  const hovered = carousel?.matches(":hover") || false;
+  return hovered || hoverPaused || tabPaused || wheelPaused;
+}
+// Make sure carousel can receive pointer events smoothly
+// (pointer events unify mouse + touch + pen)
+// MOBILE TOUCH + DRAG (tap-friendly)
+let isDragging = false;
+let dragArmed = false;   // pointer is down, but not yet dragging
+let dragStartX = 0;
+let startX = 0;
+
+let lastDragX = 0;
+let lastDragT = 0;
+
+const DRAG_THRESHOLD = 8; // px (tune: 6–12)
+
+carousel.style.touchAction = "pan-y"; // keep page vertical scroll
+
+carousel.addEventListener("pointerdown", (e) => {
+  if (e.pointerType === "mouse" && e.button !== 0) return;
+
+  dragArmed = true;
+  isDragging = false;
+
+  dragStartX = e.clientX;
+  startX = x;
+
+  lastDragX = e.clientX;
+  lastDragT = performance.now();
+
+  // don't capture yet, lets taps/clicks still behave like clicks
+  wheelVelocity = 0;
+});
+
+carousel.addEventListener("pointermove", (e) => {
+  if (!dragArmed) return;
+
+  const dx = e.clientX - dragStartX;
+
+  // Only enter dragging after user moves enough
+  if (!isDragging && Math.abs(dx) > DRAG_THRESHOLD) {
+    isDragging = true;
+
+    wheelPaused = true;
+    hoverPaused = true;
+
+    carousel.setPointerCapture?.(e.pointerId);
+    last = performance.now();
+  }
+
+  if (!isDragging) return;
+
+  // Actual dragging
+  x = startX + dx;
+
+  // momentum estimate
+  const now = performance.now();
+  const dt = (now - lastDragT) / 1000;
+  if (dt > 0) {
+    const vx = (e.clientX - lastDragX) / dt; // px/sec
+    wheelVelocity = -vx;
+  }
+  lastDragX = e.clientX;
+  lastDragT = now;
+
+  wrap();
+  track.style.transform = `translateX(${x}px)`;
+});
+
+function endDrag(e) {
+  dragArmed = false;
+
+  if (!isDragging) {
+    return;
+  }
+
+  isDragging = false;
+  wheelPaused = false;
+  hoverPaused = false;
+  last = performance.now();
+}
+
+carousel.addEventListener("pointerup", endDrag);
+carousel.addEventListener("pointercancel", endDrag);
+
+carousel.addEventListener("pointerleave", (e) => {
+  // If pointer is captured, leave won't fire meaningfully; but safe anyway
+  if (isDragging && e.pointerType === "mouse") endDrag(e);
+});
+
+// ===============================
+// TAP-TO-SHOW INFO ON MOBILE
+// ===============================
+
+// On mobile, tapping a slide should show its info (hover replacement)
+slides.forEach((slide) => {
+  slide.addEventListener("click", (e) => {
+    if (!isMobileLike()) return;
+
+    // If user was dragging, ignore "click" that can fire after drag
+    // (small threshold: if momentum exists, user likely dragged)
+    if (Math.abs(wheelVelocity) > 30) return;
+
+    setInfoFromSlide(slide);
+  });
+});
+const carousel1 = document.querySelector(".carousel");
+
+// Optional: tap outside slides (but inside carousel) clears info on mobile
+carousel1.addEventListener("click", (e) => {
+  if (!isMobileLike()) return;
+
+  // If click came from a slide, skip (handled above)
+  if (e.target.closest(".slide")) return;
+
+  clearInfo();
+  document.getElementById("carousel-info").classList.remove("active");
+});
+
+
 /* invis char:ㅤ*/
 
 // Source - https://stackoverflow.com/a (mobileAndTabletCheck)
@@ -252,7 +274,6 @@ function clearInfo() {
     
 }
 clearInfo();
-const carousel1 = document.querySelector(".carousel");
 
 /* show / hide info when entering or leaving the CAROUSEL */
 carousel1.addEventListener("mouseenter", () => {
@@ -290,6 +311,3 @@ slides.forEach(slide => {
         carousel1.classList.remove("hovering");
     });
 });
-
-
-
