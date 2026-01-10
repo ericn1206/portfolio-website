@@ -82,7 +82,6 @@ experience html
   overflow: hidden;
   aspect-ratio: 16 / 9;
   margin-bottom: 14px;
-  border: 1px solid rgba(255,255,255,0.55);
 }
 .title-row {
   display: flex;
@@ -328,13 +327,12 @@ experience html
   transform: scale(1.02);
   transition: opacity 220ms ease, transform 220ms ease;
   pointer-events: none;
-  border: 2px solid rgb(179, 179, 179);
-  overflow:hidden;
-}
-
-.car-slide {
+  border: 2px solid rgb(212, 212, 212);
   z-index: 1;
   pointer-events: none; /* images shouldn't eat clicks */
+  overflow:hidden;
+  border-radius: 18px;
+
 }
 
 /* buttons + dots above */
