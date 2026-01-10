@@ -28,7 +28,8 @@ h1 {
 .about-me {
     margin-top: 1rem;
     margin-bottom: 1rem;
-
+    font-weight: 600;
+    color: rgb(70, 70, 70);
 }
 
 
@@ -160,7 +161,7 @@ h1 {
 .carousel-info p {
     font-size: clamp(1rem, 0.9vw, 1.2rem);
     margin-bottom: clamp(0.55rem, 0.15vw, 0.7rem) 0;
-    color: #aaa;
+    color: #8a8a8a;
 }
 
 .carousel-info {

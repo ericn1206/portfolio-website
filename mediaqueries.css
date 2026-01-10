@@ -65,7 +65,15 @@
         margin-bottom: 0.5rem;
     }
 
+    /* experiences.html*/
+    .card-content {
+        flex-direction: column;
+    }
 
+    .card-image {
+        width: 180px;
+        height: 180px;
+    }
 
 
 

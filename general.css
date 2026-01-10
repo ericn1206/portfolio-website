@@ -9,6 +9,7 @@
 html, body {
     height: 100%;
     margin: 0;
+    
 }
 
 #bg{
@@ -41,6 +42,7 @@ body {
   min-height: 100svh;
   flex: 1;
 padding-inline: clamp(1rem, 4vw, 3rem);
+
 
 }
 
@@ -156,6 +158,7 @@ padding-inline: clamp(1rem, 4vw, 3rem);
 .socials a .fa-linkedin { transform: translateX(0.6px); }
 .socials a .fa-github   { transform: translateX(0.5px); }
 .socials a .fa-envelope { transform: translateX(0.5px); }
+.socials a .fa-file-lines { transform: translateX(1px); }
 
 html {
     scroll-behavior: smooth;
@@ -270,6 +273,7 @@ nav {
     margin: 0;
     padding: 0;
     width: 100%;
+    font-weight: 700;
 }
 
 
