@@ -1,0 +1,82 @@
+@media screen and (max-width: 950px) {
+    .carousel-wrapper {
+    padding-top: 0rem;
+    width: 90vw;
+    margin-left: calc(50% - 45vw);
+    }
+
+
+    .carousel-info h3 {
+        font-size: clamp(1.0rem, 0.7vw, 1.9rem);
+        margin-bottom: clamp(0.15rem, 0.15vw, 0.3rem);
+    }
+    .carousel-info p {
+        font-size: clamp(0.8rem, 0.7vw, 1.9rem);
+        margin-bottom: clamp(0.15rem, 0.15vw, 0.3rem);
+    }
+    .slide {
+        flex: 0 0 clamp(330px,30vw,460px);  /* 3 cards per view with gap */
+        height: clamp(430px,23vw,520px)
+    }
+
+
+@media screen and (max-width: 600px) {
+
+    #desktop-nav {
+        display: none;
+    }
+    #hamburger-nav {
+        display: flex;
+    }
+
+    section,
+    .section-container {
+        height: fit-content;
+    }
+    section {
+        margin: 0 5%;
+    }
+    
+    footer nav {
+        height: fit-content;
+        margin-bottom: 2rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }   
+    
+
+
+
+
+
+  /*
+
+  .carousel {
+    display: none;
+  }
+
+  .carousel-info {
+    min-height: 0px;
+  }
+  .carousel-info h3 {
+    height:0px;
+  }
+
+  .projects-label {
+    display: none;
+  }
+
+  .projects-btn {
+    margin: auto;
+  }
+    */
+  
+
+}
