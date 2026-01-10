@@ -30,6 +30,8 @@ experience html
 .pdf-btn {
   display: flex;
   margin-bottom: 1rem;
+  margin-top: 2rem;
+
   font-weight: 600;
   height: 3rem;
   /* margin-left: 10%; same as fullscreen */
