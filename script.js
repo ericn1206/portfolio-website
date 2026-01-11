@@ -115,7 +115,7 @@ document.querySelectorAll(".typewriter").forEach(el => {
     const full = el.dataset.text ?? el.textContent;
     el.textContent = ""; // start empty
 
-    const delayMs = 2600;     // start delay
+    const delayMs = 2200;     // start delay
     const msPerChar = 70;    // typing speed
 
     let i = 0;
@@ -224,9 +224,6 @@ carousel.addEventListener("pointerleave", (e) => {
   if (isDragging && e.pointerType === "mouse") endDrag(e);
 });
 
-// ===============================
-// TAP-TO-SHOW INFO ON MOBILE
-// ===============================
 
 // On mobile, tapping a slide should show its info (hover replacement)
 slides.forEach((slide) => {
