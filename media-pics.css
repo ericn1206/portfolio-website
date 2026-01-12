@@ -50,34 +50,12 @@
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
-    }   
-    
+    }  
 
-
-
-
-
-  /*
-
-  .carousel {
-    display: none;
-  }
-
-  .carousel-info {
-    min-height: 0px;
-  }
-  .carousel-info h3 {
-    height:0px;
-  }
-
-  .projects-label {
-    display: none;
-  }
-
-  .projects-btn {
-    margin: auto;
-  }
-    */
+    .slide {
+        flex: 0 0 clamp(280px,30vw,360px);  /* 3 cards per view with gap */
+        height: clamp(370px,23vw,420px)
+    }
   
 
 }
