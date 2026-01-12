@@ -83,8 +83,8 @@
             transparent 0%,
             rgba(0, 0, 0, 0.2) 10%,
             rgba(0, 0, 0, 0.8) 20%,
-            black 30%,
-            black 70%,
+            black 5%,
+            black 95%,
             rgba(0, 0, 0, 0.8) 80%,
             rgba(0, 0, 0, 0.2) 90%,
             transparent 100%
@@ -92,15 +92,15 @@
         -webkit-mask-image: linear-gradient(
             to right,
             transparent 0%,
-            black 0%,
-            black 100%,
+            black 5%,
+            black 95%,
             transparent 100%
         );
         mask-image: linear-gradient(
             to right,
             transparent 0%,
-            black 0%,
-            black 100%,
+            black 5%,
+            black 95%,
             transparent 100%
         );
 
