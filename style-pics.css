@@ -2,7 +2,6 @@
     position: relative;
 }
 
-
 p {
     color: rgb(85, 85, 85);
     line-height: 1.6;
@@ -153,7 +152,6 @@ h1 {
 .carousel-info h3 {
     font-size: clamp(1.3rem, 1.1vw, 1.9rem);
     margin-bottom: clamp(0.25rem, 0.15vw, 0.4rem);
-    
 }
 
 .carousel-info p {

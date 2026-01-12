@@ -231,7 +231,6 @@ slides.forEach((slide) => {
     if (!isMobileLike()) return;
 
     // If user was dragging, ignore "click" that can fire after drag
-    // (small threshold: if momentum exists, user likely dragged)
     if (Math.abs(wheelVelocity) > 30) return;
 
     setInfoFromSlide(slide);
@@ -239,7 +238,6 @@ slides.forEach((slide) => {
 });
 const carousel1 = document.querySelector(".carousel");
 
-// Optional: tap outside slides (but inside carousel) clears info on mobile
 carousel1.addEventListener("click", (e) => {
   if (!isMobileLike()) return;
 
@@ -249,9 +247,6 @@ carousel1.addEventListener("click", (e) => {
   clearInfo();
   document.getElementById("carousel-info").classList.remove("active");
 });
-
-
-/* invis char:ㅤ*/
 
 // Source - https://stackoverflow.com/a (mobileAndTabletCheck)
 // Posted by Michael Zaporozhets, modified by community. See post 'Timeline' for change history
@@ -263,48 +258,45 @@ window.mobileAndTabletCheck = function() {
 };
 
 function clearInfo() {
-    title.textContent = "scroll/swipe to interact";
-    desc.textContent = "hover to view descriptions";
-    if (mobileAndTabletCheck()) {
-        desc.textContent = "tap to view descriptions";
-    }
-    
+  title.textContent = "scroll/swipe to interact";
+  desc.textContent = "hover to view descriptions";
+  if (mobileAndTabletCheck()) {
+      desc.textContent = "tap to view descriptions";
+  }
 }
 clearInfo();
 
 /* show / hide info when entering or leaving the CAROUSEL */
 carousel1.addEventListener("mouseenter", () => {
-    // show info area
-    document.getElementById("carousel-info").classList.add("active");
-
+  // show info area
+  document.getElementById("carousel-info").classList.add("active");
 });
 
 carousel1.addEventListener("mouseleave", () => {
-    // hide info area
-    document.getElementById("carousel-info").classList.remove("active");
+  // hide info area
+  document.getElementById("carousel-info").classList.remove("active");
 
-
-    // clear text
-    clearInfo();
+  // clear text
+  clearInfo();
 });
 
 /* slides only update text */
 slides.forEach(slide => {
-    slide.addEventListener("mouseenter", () => {
-        title.textContent = slide.dataset.title || "";
-        desc.textContent = slide.dataset.desc || "";
-    });
+  slide.addEventListener("mouseenter", () => {
+    title.textContent = slide.dataset.title || "";
+    desc.textContent = slide.dataset.desc || "";
+  });
 });
 
 
 // for mouse blur carousel effect
 
 slides.forEach(slide => {
-    slide.addEventListener("mouseenter", () => {
-        carousel1.classList.add("hovering");
-    });
+  slide.addEventListener("mouseenter", () => {
+    carousel1.classList.add("hovering");
+  });
 
-    slide.addEventListener("mouseleave", () => {
-        carousel1.classList.remove("hovering");
-    });
+  slide.addEventListener("mouseleave", () => {
+    carousel1.classList.remove("hovering");
+  });
 });

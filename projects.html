@@ -4,225 +4,329 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Projects - Eric</title>
-    <link rel="stylesheet" href="general.css"/>
+
+    <link rel="stylesheet" href="general.css" />
     <link rel="stylesheet" href="style-projects.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
+
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-        <link rel="icon" type="image/x-icon" href="/assets/favicon-web.png">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-web.png" />
   </head>
+
   <body>
     <canvas id="bg"></canvas>
+
     <main class="page">
-
-    <nav id="desktop-nav">
+      <!-- DESKTOP NAV -->
+      <nav id="desktop-nav">
         <ul class="nav-links">
-            <li class="logo"><a href="index.html">{eric nguyen}</a></li>
-            <li class="link-in-nav"><a href="index.html">index</a></li>
-            <li class="link-in-nav"><a href="#" style="color:red;">projects</a></li>
-            <li class="link-in-nav"><a href="experience.html">experience</a></li>
-            <li class="link-in-nav"><a href="pics.html">pics</a></li>
+          <li class="logo">
+            <a href="index.html">{eric nguyen}</a>
+          </li>
+          <li class="link-in-nav">
+            <a href="index.html">index</a>
+          </li>
+          <li class="link-in-nav">
+            <a href="#" style="color: red;">projects</a>
+          </li>
+          <li class="link-in-nav">
+            <a href="experience.html">experience</a>
+          </li>
+          <li class="link-in-nav">
+            <a href="pics.html">pics</a>
+          </li>
         </ul>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo"><a href="index.html">{eric nguyen}</a></div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+      </nav>
+
+      <!-- HAMBURGER NAV -->
+      <nav id="hamburger-nav">
+        <div class="logo">
+          <a href="index.html">{eric nguyen}</a>
         </div>
-        <div class="menu-links">
+
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="menu-links">
             <div class="menu-close" onclick="toggleMenu()">×</div>
-            <ul>    
-                <li><a href="index.html" onclick="toggleMenu()">index</a></li>
-                <li><a href="#" onclick="toggleMenu()" style="color:red;">projects</a></li>
-                <li><a href="experience.html" onclick="toggleMenu()">experience</a></li>
-                <li><a href="pics.html" onclick="toggleMenu()">pics</a></li>
+            <ul>
+              <li>
+                <a href="index.html" onclick="toggleMenu()">index</a>
+              </li>
+              <li>
+                <a href="#" onclick="toggleMenu()" style="color: red;">projects</a>
+              </li>
+              <li>
+                <a href="experience.html" onclick="toggleMenu()">experience</a>
+              </li>
+              <li>
+                <a href="pics.html" onclick="toggleMenu()">pics</a>
+              </li>
             </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-
-<!-- make first card margin top  -->
-
-    <div class="glass-card" id="scheme" style="margin-top: 2rem;">
+      <!-- PROJECT: SCHEME -->
+      <div class="glass-card" id="scheme" style="margin-top: 2rem;">
         <div class="title-row">
           <h2 class="title">scheme interpreter</h2>
           <h2 class="tech">[python]</h2>
         </div>
 
         <div class="carousel" data-carousel>
-          <!-- 
-            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
-          -->
-            <div class="car-track" data-track>
-            <img class="car-slide is-active" src="assets/scheme_interp.png" alt="Project screenshot 1">
-
-
-            </div>
-            <!---
-
-            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
-
-            <div class="car-dots" data-dots>
-            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
-
-
-            </div>
-          -->
-       
+          <div class="car-track" data-track>
+            <img
+              class="car-slide is-active"
+              src="assets/scheme_interp.png"
+              alt="Project screenshot 1"
+            />
+          </div>
         </div>
-        <p >An interpreter for a subset of the scheme language, written using python. The intepreter follows a functional programing model that includes scheme's syntax, eval rules, and built-in procedures. 
-          </p>
+
+        <p>
+          An interpreter for a subset of the scheme language, written using
+          python. The intepreter follows a functional programing model that
+          includes scheme's syntax, eval rules, and built-in procedures.
+        </p>
 
         <div class="card-actions-row">
-
-            <a class="card-actions" href="https://github.com/ericn1206/scheme-interpreter">github</a>
+          <a
+            class="card-actions"
+            href="https://github.com/ericn1206/scheme-interpreter"
+          >
+            github
+          </a>
           <h3>november 2025</h3>
         </div>
-    </div>
-    
-  <div class="glass-card" id="ants">
+      </div>
+
+      <!-- PROJECT: ANTS -->
+      <div class="glass-card" id="ants">
         <div class="title-row">
           <h2 class="title">ants vs. some bees</h2>
           <h2 class="tech">[python]</h2>
         </div>
 
         <div class="carousel" data-carousel>
-            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
+          <button
+            class="car-btn prev"
+            type="button"
+            data-prev
+            aria-label="Previous slide"
+          >
+            ‹
+          </button>
 
-            <div class="car-track" data-track>
-            <img class="car-slide is-active" src="assets/ants.png" alt="Project screenshot 1">
-            <img class="car-slide" src="assets/ants2.png" alt="Project screenshot 2">
+          <div class="car-track" data-track>
+            <img
+              class="car-slide is-active"
+              src="assets/ants.png"
+              alt="Project screenshot 1"
+            />
+            <img
+              class="car-slide"
+              src="assets/ants2.png"
+              alt="Project screenshot 2"
+            />
+          </div>
 
-            </div>
+          <button
+            class="car-btn next"
+            type="button"
+            data-next
+            aria-label="Next slide"
+          >
+            ›
+          </button>
 
-            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
-
-            <div class="car-dots" data-dots>
-            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
-            <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
-
-            </div>
-       
+          <div class="car-dots" data-dots>
+            <button
+              type="button"
+              class="dot is-active"
+              data-dot="0"
+              aria-label="Go to slide 1"
+            ></button>
+            <button
+              type="button"
+              class="dot"
+              data-dot="1"
+              aria-label="Go to slide 2"
+            ></button>
+          </div>
         </div>
-        <p> A tower-defense game inspired by plants vs. zombies, designed by cs61a instructors. 
-          Users place ants on a grid, who must protect their queen from invading bees. I used object-oriented programming and functional programming 
-          to program the various interactions between ants and bees. 
-          </p>
+
+        <p>
+          A tower-defense game inspired by plants vs. zombies, designed by cs61a
+          instructors. Users place ants on a grid, who must protect their queen
+          from invading bees. I used object-oriented programming and functional
+          programming to program the various interactions between ants and bees.
+        </p>
 
         <div class="card-actions-row">
-  
-
-            <a class="card-actions" href="https://github.com/ericn1206/ants-vs-some-bees">github</a>
+          <a
+            class="card-actions"
+            href="https://github.com/ericn1206/ants-vs-some-bees"
+          >
+            github
+          </a>
           <h3>october 2025</h3>
         </div>
-    </div>
+      </div>
 
-    <div class="glass-card" id="project_enginuity">
+      <!-- PROJECT: ENGINUITY -->
+      <div class="glass-card" id="project_enginuity">
         <div class="title-row">
           <h2 class="title">project enginuity: civil structures</h2>
           <h2 class="tech">[unity, c#]</h2>
         </div>
 
         <div class="carousel" data-carousel>
-            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
+          <button
+            class="car-btn prev"
+            type="button"
+            data-prev
+            aria-label="Previous slide"
+          >
+            ‹
+          </button>
 
-            <div class="car-track" data-track>
-            <img class="car-slide is-active" src="assets/proj1.png" alt="Project screenshot 1">
-            <img class="car-slide" src="assets/proj2.png" alt="Project screenshot 2">
-            <img class="car-slide" src="assets/proj3.png" alt="Project screenshot 3">
+          <div class="car-track" data-track>
+            <img class="car-slide is-active" src="assets/proj1.png" />
+            <img class="car-slide" src="assets/proj2.png" />
+            <img class="car-slide" src="assets/proj3.png" />
+          </div>
 
-            </div>
+          <button
+            class="car-btn next"
+            type="button"
+            data-next
+            aria-label="Next slide"
+          >
+            ›
+          </button>
 
-            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
-
-            <div class="car-dots" data-dots>
-            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
-            <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
-            <button type="button" class="dot" data-dot="2" aria-label="Go to slide 3"></button>
-
-            </div>
-       
+          <div class="car-dots" data-dots>
+            <button class="dot is-active" data-dot="0"></button>
+            <button class="dot" data-dot="1"></button>
+            <button class="dot" data-dot="2"></button>
+          </div>
         </div>
-        <p > An interactive bridge-building simulation that teaches middle school students foundational civil engineering principles and physics concepts like tension and compression. Its goal is to democratize access to hands-on STEM learning by making engineering exploration possible anywhere, with just a laptop.
+
+        <p>
+          An interactive bridge-building simulation that teaches middle school
+          students foundational civil engineering principles and physics
+          concepts like tension and compression. Its goal is to democratize
+          access to hands-on STEM learning by making engineering exploration
+          possible anywhere, with just a laptop.
         </p>
 
         <div class="card-actions-row">
-            <a class="card-actions" href="https://projectenginuity.itch.io/civil-structures">itch.io</a>
-
-            <a class="card-actions" href="https://github.com/ericn1206/Project-Enginuity-Civil-Structures">github</a>
+          <a
+            class="card-actions"
+            href="https://projectenginuity.itch.io/civil-structures"
+          >
+            itch.io
+          </a>
+          <a
+            class="card-actions"
+            href="https://github.com/ericn1206/Project-Enginuity-Civil-Structures"
+          >
+            github
+          </a>
           <h3>march 2025</h3>
         </div>
-    </div>
-    
+      </div>
 
-    <div class="glass-card" id="quantum">
+      <!-- PROJECT: QUANTUM -->
+      <div class="glass-card" id="quantum">
         <div class="title-row">
           <h2 class="title">quantum cryptography: bb84</h2>
           <h2 class="tech">[arduino, cad, c++]</h2>
         </div>
 
         <div class="carousel" data-carousel>
-            <button class="car-btn prev" type="button" data-prev aria-label="Previous slide">‹</button>
+          <button class="car-btn prev" type="button" data-prev>‹</button>
 
-            <div class="car-track" data-track>
-            <img class="car-slide is-active" src="assets/quant5.png" alt="Project screenshot 1">
-            <img class="car-slide" src="assets/quant3.png" alt="Project screenshot 2">
-            <img class="car-slide" src="assets/quant4.png" alt="Project screenshot 3">
-            <img class="car-slide" src="assets/quantum.jpg" alt="Project screenshot 4">
+          <div class="car-track" data-track>
+            <img class="car-slide is-active" src="assets/quant5.png" />
+            <img class="car-slide" src="assets/quant3.png" />
+            <img class="car-slide" src="assets/quant4.png" />
+            <img class="car-slide" src="assets/quantum.jpg" />
+          </div>
 
-            </div>
+          <button class="car-btn next" type="button" data-next>›</button>
 
-            <button class="car-btn next" type="button" data-next aria-label="Next slide">›</button>
-
-            <div class="car-dots" data-dots>
-            <button type="button" class="dot is-active" data-dot="0" aria-label="Go to slide 1"></button>
-            <button type="button" class="dot" data-dot="1" aria-label="Go to slide 2"></button>
-            <button type="button" class="dot" data-dot="2" aria-label="Go to slide 3"></button>
-            <button type="button" class="dot" data-dot="3" aria-label="Go to slide 4"></button>
-
-            </div>
-       
+          <div class="car-dots" data-dots>
+            <button class="dot is-active" data-dot="0"></button>
+            <button class="dot" data-dot="1"></button>
+            <button class="dot" data-dot="2"></button>
+            <button class="dot" data-dot="3"></button>
+          </div>
         </div>
-        <p >A photonics model of an autonomous quantum cryptography system, built to improve the efficiency of key generation.
-          My team used the bb84 protocol for quantum key distribution (QKD) by transmiting laser pulses with different polarization states through wave plates and a 
-          polarizing beam splitter to determine transmitted bits. 
 
+        <p>
+          A photonics model of an autonomous quantum cryptography system, built to
+          improve the efficiency of key generation. My team used the bb84
+          protocol for quantum key distribution (QKD) by transmiting laser
+          pulses with different polarization states through wave plates and a
+          polarizing beam splitter to determine transmitted bits.
         </p>
 
         <div class="card-actions-row">
-
-            <a class="card-actions" href="https://github.com/ericn1206/bb84-protocol">github</a>
-
-            <a class="card-actions" href="https://docs.google.com/presentation/d/1DnNd8W06i1qBbEpZSTSjgLxl3xcrzXQIn0giFYaU6QI/edit?usp=sharing">slides</a>
-
+          <a
+            class="card-actions"
+            href="https://github.com/ericn1206/bb84-protocol"
+          >
+            github
+          </a>
+          <a
+            class="card-actions"
+            href="https://docs.google.com/presentation/d/1DnNd8W06i1qBbEpZSTSjgLxl3xcrzXQIn0giFYaU6QI/edit?usp=sharing"
+          >
+            slides
+          </a>
           <h3>august 2024</h3>
         </div>
-    </div>
+      </div>
 
-    <section class="socials">
-        <a href="https://www.linkedin.com/in/ericnguyen6/" target="_blank" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
+      <!-- SOCIALS -->
+      <section class="socials">
+        <a
+          href="https://www.linkedin.com/in/ericnguyen6/"
+          target="_blank"
+          aria-label="LinkedIn"
+        >
+          <i class="fa-brands fa-linkedin"></i>
         </a>
-        <a href="https://github.com/ericn1206" target="_blank" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
+        <a
+          href="https://github.com/ericn1206"
+          target="_blank"
+          aria-label="GitHub"
+        >
+          <i class="fa-brands fa-github"></i>
         </a>
         <a href="mailto:eric_nguyen@berkeley.edu" aria-label="Email">
-            <i class="fa-solid fa-envelope"></i>
+          <i class="fa-solid fa-envelope"></i>
         </a>
-        <a href="assets/Eric_Nguyen_Resume.pdf" aria-label="Email">
-            <i class="fa-solid fa-file-lines"></i>
+        <a href="assets/Eric_Nguyen_Resume.pdf" aria-label="Resume">
+          <i class="fa-solid fa-file-lines"></i>
         </a>
-     </section>
-    <footer>
-      <p>&#169; 2026 eric nguyen</p>
-    </footer>
+      </section>
+
+      <footer>
+        <p>&#169; 2026 eric nguyen</p>
+      </footer>
     </main>
 
     <script src="script-project.js"></script>
