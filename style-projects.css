@@ -16,7 +16,6 @@ p {
 h3 {
     margin-left: auto;
     padding-right:1rem;
-    font-size: 15px;
     font-size: clamp(0.8rem, 1.3vw, 0.87rem);
 
 }
@@ -121,8 +120,8 @@ experience html
 }
 
 
-.title-year {
-  font-weight: 500;
+.glass-card .title-year {
+  font-weight: 600;
   font-size: 15px;
 }
 

@@ -71,8 +71,8 @@
     }
 
     .card-image {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
     }
     .carousel-viewport {
 
@@ -104,6 +104,12 @@
             transparent 100%
         );
 
+    }
+    .glass-card .title-year {
+        font-size: clamp(12px, 1.2vw + 10px, 15px);
+    }
+    .glass-card h2.title-place{
+        font-size: clamp(15px, 1.5vw + 14px, 19px);
     }
 
 
