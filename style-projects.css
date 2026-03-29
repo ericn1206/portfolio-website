@@ -123,6 +123,14 @@ experience html
 .glass-card .title-year {
   font-weight: 600;
   font-size: 15px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.glass-card h2.title-place {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .glass-card {
