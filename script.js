@@ -88,9 +88,17 @@ if (currentlyEl) {
         "currently: bombing midterms",
         "currently: eating at zhangliang",
         "currently: eating at kimchi garden"
-
     ];
-    currentlyEl.textContent = statuses[Math.floor(Math.random() * statuses.length)];
+    let currentIdx = Math.floor(Math.random() * statuses.length);
+    currentlyEl.textContent = statuses[currentIdx];
+
+    currentlyEl.addEventListener('click', () => {
+        let newIdx;
+        do { newIdx = Math.floor(Math.random() * statuses.length); }
+        while (newIdx === currentIdx && statuses.length > 1);
+        currentIdx = newIdx;
+        currentlyEl.textContent = statuses[currentIdx];
+    });
 }
 
 // TYPEWRITER
@@ -98,7 +106,7 @@ document.querySelectorAll(".typewriter").forEach(el => {
     const full = el.dataset.text ?? el.textContent;
     el.textContent = "";
     const delayMs = 300;
-    const msPerChar = 110;
+    const msPerChar = 90;
     let i = 0;
     setTimeout(() => {
         const timer = setInterval(() => {
@@ -176,7 +184,7 @@ function endDrag() {
 carousel.addEventListener("pointerup", endDrag);
 carousel.addEventListener("pointercancel", endDrag);
 carousel.addEventListener("pointerleave", (e) => {
-    if (isDragging && e.pointerType === "mouse") endDrag();
+    if (isDragging && e.pointerType === 'mouse') endDrag();
 });
 
 // Mobile tap

@@ -21,7 +21,7 @@ h1 {
     /* animated underline drawn left → right */
     background: linear-gradient(red, red) no-repeat left bottom / 0% 3px;
     padding-bottom: 1px;
-    animation: underline-draw 0.45s ease-out 2.15s forwards;
+    animation: underline-draw 0.45s ease-out 1.6s forwards;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -323,7 +323,16 @@ a {
 }
 
 /* rotating "currently:" status */
+.currently-status:hover {
+    color: rgba(220, 60, 60, 0.7);
+}
+
 .currently-status {
+    font-weight: 700;
+    width: fit-content;
+    margin-inline: auto;
+    user-select: none;
+    -webkit-user-select: none;
     text-align: center;
     font-size: clamp(0.7rem, 1vw, 0.8rem);
     color: rgb(160, 160, 160);
@@ -332,6 +341,6 @@ a {
     margin-top: 0.35rem;
     margin-bottom: 0;
     opacity: 0;
-    animation: pFadeDown 0.4s ease-out 2.65s forwards;
+    animation: pFadeDown 0.4s ease-out 2.1s forwards;
 }
 

@@ -30,7 +30,7 @@ body {
     font-weight: 500;
     margin: 0;
     letter-spacing: 1px;
-    background-color: rgb(240, 235, 230);
+    background-color: rgb(239, 235, 232);
     background-image:
         linear-gradient(rgba(130, 130, 160, 0.1) 1px, transparent 1px),
         linear-gradient(90deg, rgba(130, 130, 160, 0.1) 1px, transparent 1px);
@@ -320,6 +320,11 @@ nav {
 }
 
 /* Logo */
+.logo a {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .logo {
     display: flex;
     font-size: 2rem;

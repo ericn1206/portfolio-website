@@ -27,9 +27,10 @@ function morphLoop() {
 }
 
 document.addEventListener('mouseover', (e) => {
-    // Slide hover: turn red but don't morph
+    // Slide or currently-status hover: turn red but don't morph
     const slide = e.target.closest('.slide');
-    if (slide) {
+    const currently = e.target.closest('.currently-status');
+    if (slide || currently) {
         blob.style.background = 'rgba(255, 20, 20, 0.22)';
         blob.style.border     = '2.5px solid rgba(220, 50, 50, 0.65)';
     } else if (!isMorphing) {
@@ -80,6 +81,23 @@ document.addEventListener('mouseenter', (e) => {
 });
 document.addEventListener('mousedown',  (e) => { if (e.button === 0 && !isMorphing) blob.style.background = 'rgba(220, 50, 50, 0.65)'; });
 document.addEventListener('mouseup',    (e) => { if (e.button === 0 && !isMorphing) blob.style.background = ''; });
+
+// LOGO BRACKET CYCLING — event delegation so it works after SPA DOM swaps
+const bracketPairs = [['-','-'], ['(',')'],[  '[',']'], ['<','>'], ['{','}']];
+let bracketIdx = 0;
+
+document.addEventListener('click', (e) => {
+    const logo = e.target.closest('.logo a');
+    if (!logo) return;
+    e.preventDefault();
+    bracketIdx = (bracketIdx + 1) % bracketPairs.length;
+    const [o, c] = bracketPairs[bracketIdx];
+    document.querySelectorAll('.logo a').forEach(l => { l.textContent = `${o}eric nguyen${c}`; });
+    logo.classList.remove('logo-wiggle');
+    void logo.offsetWidth;
+    logo.classList.add('logo-wiggle');
+    logo.addEventListener('animationend', () => logo.classList.remove('logo-wiggle'), { once: true });
+});
 
 // HAMBURGER MENU — global so inline onclick= attributes work after DOM swaps
 function toggleMenu() {
