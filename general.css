@@ -32,8 +32,8 @@ body {
     letter-spacing: 1px;
     background-color: rgb(240, 235, 230);
     background-image:
-        linear-gradient(rgba(130, 130, 160, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(130, 130, 160, 0.12) 1px, transparent 1px);
+        linear-gradient(rgba(130, 130, 160, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(130, 130, 160, 0.1) 1px, transparent 1px);
     background-size: 24px 24px;
     min-height: 100svh;
     flex-direction: column;

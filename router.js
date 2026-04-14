@@ -72,7 +72,12 @@ document.addEventListener('mouseover', (e) => {
 });
 
 document.addEventListener('mouseleave', () => { blob.style.display = 'none'; });
-document.addEventListener('mouseenter', () => { blob.style.display = '';     });
+document.addEventListener('mouseenter', (e) => {
+    blob.style.transition = 'none';
+    blob.style.transform  = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    blob.style.display    = '';
+    requestAnimationFrame(() => { blob.style.transition = ''; });
+});
 document.addEventListener('mousedown',  (e) => { if (e.button === 0 && !isMorphing) blob.style.background = 'rgba(220, 50, 50, 0.65)'; });
 document.addEventListener('mouseup',    (e) => { if (e.button === 0 && !isMorphing) blob.style.background = ''; });
 
