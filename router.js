@@ -38,7 +38,7 @@ document.addEventListener('mouseover', (e) => {
     }
 
     const target = e.target.closest('a, button');
-    if (target && !target.closest('.carousel')) {
+    if (target && (!target.closest('.carousel') || target.classList.contains('car-btn'))) {
         if (!isMorphing) {
             const r  = target.getBoundingClientRect();
             const br = getComputedStyle(target).borderRadius;
