@@ -133,14 +133,32 @@ function runPageScripts(newDoc) {
         });
 }
 
+// Ensure URL has .html for fetching, strip it for display
+function toFetchUrl(url) {
+    const u = new URL(url, location.href);
+    if (!u.pathname.endsWith('.html') && !u.pathname.endsWith('/')) {
+        u.pathname += '.html';
+    }
+    return u.href;
+}
+
+function toCleanUrl(url) {
+    const u = new URL(url, location.href);
+    u.pathname = u.pathname.replace(/\.html$/, '');
+    return u.href;
+}
+
 async function spaNavigate(url) {
     resetBlob();
     // Close hamburger if open
     document.querySelector('.menu-links')?.classList.remove('open');
     document.querySelector('.hamburger-icon')?.classList.remove('open');
 
+    const fetchUrl = toFetchUrl(url);
+    const cleanUrl = toCleanUrl(url);
+
     try {
-        const res = await fetch(url);
+        const res = await fetch(fetchUrl);
         if (!res.ok) { location.href = url; return; }
         const html = await res.text();
         const newDoc = new DOMParser().parseFromString(html, 'text/html');
@@ -152,7 +170,7 @@ async function spaNavigate(url) {
         if (newMain && curMain) curMain.innerHTML = newMain.innerHTML;
 
         document.title = newDoc.title;
-        history.pushState({ url }, '', url);
+        history.pushState({ url: cleanUrl }, '', cleanUrl);
 
         const parsedUrl = new URL(url, location.href);
         if (parsedUrl.hash) {
