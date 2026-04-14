@@ -207,7 +207,7 @@ h1 {
 
 
 .slide:hover {
-  border: 5px solid rgba(32, 32, 32, 0.8);
+  border: 5px solid rgba(237, 99, 99, 0.8);
   border-radius: 4px;
 
   background: rgba(255, 84, 84, 0.22);
@@ -305,8 +305,6 @@ h1 {
   border-color: rgba(249, 5, 5, 0.55);
 
   box-shadow: 0 5px 11px rgba(255, 0, 0, 0.3);
-
-  transform: translateY(-1px);
 }
 
 a {

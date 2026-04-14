@@ -75,20 +75,7 @@
         height: 150px;
     }
     .carousel-viewport {
-
-
-        /* no fade edges */
-        mask-image: linear-gradient(
-            to right,
-            transparent 0%,
-            rgba(0, 0, 0, 0.2) 10%,
-            rgba(0, 0, 0, 0.8) 20%,
-            black 5%,
-            black 95%,
-            rgba(0, 0, 0, 0.8) 80%,
-            rgba(0, 0, 0, 0.2) 90%,
-            transparent 100%
-        );
+        /* tighter fade on small screens */
         -webkit-mask-image: linear-gradient(
             to right,
             transparent 0%,
@@ -103,7 +90,6 @@
             black 95%,
             transparent 100%
         );
-
     }
     .glass-card .title-year {
         font-size: clamp(12px, 1.2vw + 10px, 15px);

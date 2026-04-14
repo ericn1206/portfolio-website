@@ -1,6 +1,7 @@
 /* General */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +10,8 @@
 html, body {
     height: 100%;
     margin: 0;
-    
 }
+
 
 #bg{
     position: fixed;
@@ -29,7 +30,11 @@ body {
     font-weight: 500;
     margin: 0;
     letter-spacing: 1px;
-    background-color: rgb(234, 234, 237);
+    background-color: rgb(240, 235, 230);
+    background-image:
+        linear-gradient(rgba(130, 130, 160, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(130, 130, 160, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
     min-height: 100svh;
     flex-direction: column;
     font-size: clamp(12px, 1.2vw, 16px);
@@ -142,7 +147,6 @@ padding-inline: clamp(1rem, 4vw, 3rem);
     0 10px 26px rgba(235, 37, 37, 0.28),
     inset 0 1px 0 rgba(255, 220, 220, 0.6);
 
-  transform: translateY(-2px);
 }
 
 .socials a i,
@@ -169,6 +173,45 @@ html {
 ::selection {
     background-color: lightyellow;
 }
+
+/* logo bracket wiggle */
+@keyframes logo-wiggle {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(-5deg); }
+    45%  { transform: rotate(4deg); }
+    65%  { transform: rotate(-3deg); }
+    80%  { transform: rotate(2deg); }
+    100% { transform: rotate(0deg); }
+}
+.logo-wiggle {
+    display: inline-block;
+    animation: logo-wiggle 0.4s ease-out;
+}
+
+/* custom blob cursor — !important overrides all cursor: pointer in every file */
+html, html * { cursor: none !important; }
+
+@media (max-width: 600px) {
+    html, html * { cursor: auto !important; }
+    #cursor-blob { display: none !important; }
+}
+
+#cursor-blob {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(80, 80, 100, 0.38);
+    border: 1.75px solid rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    z-index: 99999;
+    will-change: transform;
+    transition: width 0.22s ease, height 0.22s ease,
+                margin 0.22s ease, border-radius 0.22s ease;
+}
+
 
 /* Transition */
 .typewriter-wrapper{
@@ -244,7 +287,8 @@ a,
     padding: 3px 12px;
     text-decoration: none;
     font-size: 13px;
-    color:rgb(165, 165, 165);
+    color: rgb(165, 165, 165);
+    border-radius: 6px;
 }
 
 .link-in-nav:not(:last-child) {

@@ -257,8 +257,6 @@ experience html
   border-color: rgba(249, 5, 5, 0.55);
 
   box-shadow: 0 5px 11px rgba(255, 0, 0, 0.3);
-
-  transform: translateY(-1px);
   cursor: pointer;
 }
 
